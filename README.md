@@ -1,5 +1,10 @@
 {{ page.title }}
 
+{% if user %}
+  Hello {{ user.name }}!
+{% endif %}
+
+
 ## Home
 
 ## Course Description
