@@ -1,11 +1,15 @@
-## Lectures
-	
 ## Home
+
 ## Course Description
+
 ## Lectures
+
 ## Homework & Assignments
+
 ## Announcements
+
 ## Forms and Docs
+
 ## Contact Me
 
 ## Welcome to GitHub Pages
