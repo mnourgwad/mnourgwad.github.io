@@ -1,3 +1,5 @@
+{{ page.title }}
+
 ## Home
 
 ## Course Description
