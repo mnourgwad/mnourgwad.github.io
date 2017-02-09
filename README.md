@@ -1,5 +1,6 @@
 ## Home
 [First lecture](https://github.com/mnourgwad/mnourgwad.github.io/blob/master/lectures/CSE421DigitalControlL10.pdf)
+
 ## Course Description
 ## Lectures
 ## Homework & Assignments
