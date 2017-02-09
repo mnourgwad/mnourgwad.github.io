@@ -1,3 +1,4 @@
+theme: jekyll-theme-cayman 
 name: Mohammed Nour, Dr.Ing.
 markdown: kramdown
 permalink: /blog/:year/:month/:day/:title
