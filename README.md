@@ -1,4 +1,12 @@
+
 ## Home
+This repository contains my course materials, specifically for the ongoing courses
+
+* Introduction to Computers and Programming (CSE100)
+* Robotics (CSE621)
+
+All announcements by me will and all non-personal student questions should be made via issues in this repository.
+
 [First lecture](https://github.com/mnourgwad/mnourgwad.github.io/blob/master/lectures/CSE421DigitalControlL10.pdf)
 
 ## Course Description
