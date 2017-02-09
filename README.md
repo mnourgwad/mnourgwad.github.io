@@ -2,8 +2,8 @@
 ## Home
 This repository contains my course materials, specifically for the ongoing courses
 
-* Introduction to Computers and Programming (CSE100)
-* Robotics (CSE621)
+* [Introduction to Computers and Programming (CSE100)](CSE100/CSE100.md)
+* [Robotics (CSE621)](CSE4316/CSE4316.md)
 
 All announcements by me will and all non-personal student questions should be made via issues in this repository.
 
