@@ -12,8 +12,9 @@ Unless specified otherwise:
 -   Site design and content licensed under a [Creative Commons
     Attribution-Noncommercial-Share Alike 3.0 Unported
     License](http://creativecommons.org/licenses/by-nc-sa/3.0/ "License").
-![byncsa logo](images/byncsa.png "byncsa logo")
 <img src="images/byncsa.png" alt="byncsa logo" style="width: 100px;"/>
+[//]: # (This may be the most platform independent comment)
+[//]: # (![byncsa logo](images/byncsa.png "byncsa logo"))
 
 
 One important exception:
