@@ -10,8 +10,8 @@ layout: feed
  <updated>{{ site.time | date_to_xmlschema }}</updated>
  <id>http://mnourgwad.github.io/blog</id>
  <author>
-   <name>Hank Quinlan</name>
-   <email>hankquinlanhub@gmail.com</email>
+   <name>Mohammed Nour</name>
+   <email>mnahmed@eng.zu.edu.eg</email>
  </author>
 
  {% for post in site.posts %}
