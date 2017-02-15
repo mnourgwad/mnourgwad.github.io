@@ -1,0 +1,7 @@
+{% if post.direct-link != null%}
+{% assign link=post.direct-link %}
+{% else %}
+{% assign link=post.url %}
+{% endif %}
+
+<li {% if forloop.index > 5 %}class="old-post" {% endif %}><span class="postdate">{{ post.date | date: "%Y.%m.%d" }}</span> <a class="title" href="{{ link }}">{{ post.title }}</a></li>
