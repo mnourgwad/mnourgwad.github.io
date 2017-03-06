@@ -2,8 +2,6 @@
 layout: post
 title: "Test math"
 date: 2017-03-06
-category: misc
-tags: [test]
 use_math: true
 ---
 
