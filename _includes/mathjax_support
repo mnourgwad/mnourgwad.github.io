@@ -1,9 +1,65 @@
+{% comment %}<!--
+The `mathjax_support` add the support for the MathJax. It must be used in the
+`<head>..</head>` part of a HTML page.
+
+With the MathJax support, you can use the LaTeX syntax to typeset mathematical
+formula in your post:
+ - Use `$$...$$` for inline formula.
+ - Use `$$...$$` for display formula, but before the first `$$` and after the
+   last `$$` there must be either an empty line, or a line with a single `^` 
+   character.
+
+Usage:
+  1. include `mathjax_support`
+
+Example:
+
+The following is an example page layout:
+  
+    <!DOCTYPE html>
+    <html>
+      <head>
+        {% include html_meta %}
+        ...
+        {% include mathjax_support %}
+      </head>
+      <body>
+        ...
+        {{ content }}
+        ...
+      </body>
+    </html>
+
+The following is an example post:
+
+    ---
+    layout: post
+    title: "Represents the pure state of a qubit using a Bloch sphere"
+    author: Haixing Hu
+    category: research
+    tags: [quantum computing, qubit, Bloch sphere]
+    use_math: true
+    ---
+    
+    Let $$z=x+iy$$ be a complex number, where $$x$$ and $$y$$ are real numbers,
+    and $$i$$ is the imaginary unit. Let
+    
+    $$
+     r=|z|^2 = x^2 + y^2
+    $$
+    
+    be the norm of $$z$$. Then the complex number $$z$$ could be considered as
+    a point $$Z$$ on the circle with the origin $$O$$ as its center and $$r$$
+    as its radius.
+
+-->{% endcomment %}
+
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
-    TeX: {
-      equationNumbers: {
-        autoNumber: "AMS"
-      }
+    TeX: { 
+      equationNumbers: { 
+        autoNumber: "AMS" 
+      } 
     },
     tex2jax: {
       inlineMath: [ ['$','$'], ['\(', '\)'] ],
