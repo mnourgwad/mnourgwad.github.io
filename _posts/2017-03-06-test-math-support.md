@@ -5,6 +5,9 @@ date: 2017-03-06
 use_math: true
 ---
 
+When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are
+$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+
 Let's test some inline math $x$, $y$, $x_1$, $y_1$.
 
 Now a inline math with special character: $|\psi\rangle$, $x'$, $x^\*$.
