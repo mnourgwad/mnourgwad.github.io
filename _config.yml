@@ -17,8 +17,10 @@ permalink: /blog/:year/:month/:day/:title
 #    - "bower.json"
 
 # set pygments to true in order to support syntax highlight
-pygments: true
+#pygments: true
 
+highlighter: rouge
+	
 # support the pagination
 paginate: 5
 #paginate_path: "archive/page:num"
