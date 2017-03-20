@@ -5,7 +5,7 @@ body {
 	 min-height: 100%;
 }
 
-a { text-decoration: none; color: #999; }
+a { text-decoration: none; color: #9933ff; }
 a:hover { text-decoration: underline; }
 
 p { font-size: 1.5em; line-height: 1.4em; color: #333; }, ul , ol { font-size: 1em; line-height: 1em; color: #333; }
