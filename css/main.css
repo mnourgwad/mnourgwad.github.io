@@ -8,13 +8,13 @@ body {
 a { text-decoration: none; color: #999; }
 a:hover { text-decoration: underline; }
 
-p, ul { font-size: 1.5em; line-height: 1.4em; color: #333; }, ol { font-size: 1.5em; line-height: 1.4em; color: #333; }
+p { font-size: 1.5em; line-height: 1.4em; color: #333; }, ul , ol { font-size: 1em; line-height: 1em; color: #333; }
 
 h1, h2, h3, h4 {font-family: 'Lucida Sans';
     			font-weight: bold;
    			 	font-size: medium; }
 
-h1 { font-size: 2.3em;  }	
+h1 { font-size: 2em;  }	
 /*
 h1 { font-size: 3em;  }
 h2 { font-size: 2.7em; }
