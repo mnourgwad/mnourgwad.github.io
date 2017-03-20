@@ -105,3 +105,26 @@ body.discuss li.discuss
 	border-top-left-radius: 3px 5px;
 	background: white;
 }
+
+#myTableStyle {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#myTableStyle td, #myTableStyle th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#myTableStyle tr:nth-child(even){background-color: #f2f2f2;}
+
+#myTableStyle tr:hover {background-color: #ddd;}
+
+#myTableStyle th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
