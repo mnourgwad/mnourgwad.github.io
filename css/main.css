@@ -15,6 +15,8 @@ h1, h2, h3, h4 {font-family: 'Lucida Sans';
    			 	font-size: medium; }
 
 h1 { font-size: 2em;  }	
+h3 { font-size: 1.5em; }
+
 /*
 h1 { font-size: 3em;  }
 h2 { font-size: 2.7em; }
