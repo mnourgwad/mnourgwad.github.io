@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Test math"
-date: 2017-03-06
-use_math: true
+title: "Good Links"
+date: 2017-04-13
+use_math: false
 ---
 
 <p> This page coolects some of the good links I found:</p>
