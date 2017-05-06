@@ -1,0 +1,462 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>lec8Examples</title><meta name="generator" content="MATLAB 9.1"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-05-06"><meta name="DC.source" content="lec8Examples.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div>
+  <ul><li><a href="#1">input and output</a></li><li><a href="#2">format of output results</a></li><li><a href="#3">Matrix input</a></li><li><a href="#4">For loops</a></li><li><a href="#5">while loops</a></li><li><a href="#6">Linear Algebraic Equations</a></li><li><a href="#7">Linear Algebraic Equations</a></li><li><a href="#8">Polynomial &amp; Arrays</a></li><li><a href="#9">function plotting</a></li></ul></div><h2 id="1">input and output</h2><pre class="codeinput">disp(<span class="string">'Hello World'</span>)
+</pre><pre class="codeoutput">Hello World
+</pre>
+
+<pre class="codeinput">var=input('Enter any value: ');
+disp(var)
+</pre>
+</pre><pre class="codeoutput">Enter any value: 20
+var =
+   20
+</pre>
+
+<h2 id="2">format of output results</h2>
+<pre class="codeinput">format <span class="string">short</span> <span class="comment">%4 decimal digits</span>
+x=453*1.54^9
+
+format <span class="string">long</span>  <span class="comment">% 16 decimal digits</span>
+x=453*1.54^9
+
+format <span class="string">bank</span>  <span class="comment">%2 decimal digits</span>
+x=453*1.54^9
+</pre><pre class="codeoutput">
+x =
+
+   2.2069e+04
+
+
+x =
+
+     2.206910340376303e+04
+
+
+x =
+
+      22069.10
+
+</pre><h2 id="3">Matrix input</h2><pre class="codeinput">A=[1,2,3; 4,5,6; 7,8,9]
+</pre><pre class="codeoutput">
+A =
+
+          1.00          2.00          3.00
+          4.00          5.00          6.00
+          7.00          8.00          9.00
+
+</pre><h2 id="4">For loops</h2><pre class="codeinput"><span class="keyword">for</span> z= 1:2:100
+    Y = z^2;
+    disp(Y)
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">          1.00
+
+          9.00
+
+         25.00
+
+         49.00
+
+         81.00
+
+        121.00
+
+        169.00
+
+        225.00
+
+        289.00
+
+        361.00
+
+        441.00
+
+        529.00
+
+        625.00
+
+        729.00
+
+        841.00
+
+        961.00
+
+       1089.00
+
+       1225.00
+
+       1369.00
+
+       1521.00
+
+       1681.00
+
+       1849.00
+
+       2025.00
+
+       2209.00
+
+       2401.00
+
+       2601.00
+
+       2809.00
+
+       3025.00
+
+       3249.00
+
+       3481.00
+
+       3721.00
+
+       3969.00
+
+       4225.00
+
+       4489.00
+
+       4761.00
+
+       5041.00
+
+       5329.00
+
+       5625.00
+
+       5929.00
+
+       6241.00
+
+       6561.00
+
+       6889.00
+
+       7225.00
+
+       7569.00
+
+       7921.00
+
+       8281.00
+
+       8649.00
+
+       9025.00
+
+       9409.00
+
+       9801.00
+
+</pre><h2 id="5">while loops</h2><pre class="codeinput">z=1;
+<span class="keyword">while</span> (z&lt;= 100)
+    Y = z^2;
+    z = z+2;
+    disp(Y)
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">          1.00
+
+          9.00
+
+         25.00
+
+         49.00
+
+         81.00
+
+        121.00
+
+        169.00
+
+        225.00
+
+        289.00
+
+        361.00
+
+        441.00
+
+        529.00
+
+        625.00
+
+        729.00
+
+        841.00
+
+        961.00
+
+       1089.00
+
+       1225.00
+
+       1369.00
+
+       1521.00
+
+       1681.00
+
+       1849.00
+
+       2025.00
+
+       2209.00
+
+       2401.00
+
+       2601.00
+
+       2809.00
+
+       3025.00
+
+       3249.00
+
+       3481.00
+
+       3721.00
+
+       3969.00
+
+       4225.00
+
+       4489.00
+
+       4761.00
+
+       5041.00
+
+       5329.00
+
+       5625.00
+
+       5929.00
+
+       6241.00
+
+       6561.00
+
+       6889.00
+
+       7225.00
+
+       7569.00
+
+       7921.00
+
+       8281.00
+
+       8649.00
+
+       9025.00
+
+       9409.00
+
+       9801.00
+
+</pre><h2 id="6">Linear Algebraic Equations</h2><pre class="codeinput">B=[1 -4  3;3 1 2; 1 5 -1];
+C=[11;1;4];
+x=B\C
+x= inv(B)*C <span class="comment">%another solution</span>
+</pre><pre class="codeoutput">
+x =
+
+        -14.00
+          7.18
+         17.91
+
+
+x =
+
+        -14.00
+          7.18
+         17.91
+
+</pre><h2 id="7">Linear Algebraic Equations</h2><pre class="codeinput">B= [1 -4  3; 3 1 2; 1 5 -1];
+B=B'
+C=[11;1;4];
+C= C'
+x=C / B
+</pre><pre class="codeoutput">
+B =
+
+          1.00          3.00          1.00
+         -4.00          1.00          5.00
+          3.00          2.00         -1.00
+
+
+C =
+
+         11.00          1.00          4.00
+
+
+x =
+
+        -14.00          7.18         17.91
+
+</pre><h2 id="8">Polynomial &amp; Arrays</h2><pre class="codeinput">poly([-1,-2])
+
+F=polyval([7 -4 3 4], [1:.5:4])
+</pre><pre class="codeoutput">
+ans =
+
+          1.00          3.00          2.00
+
+
+F =
+
+  Columns 1 through 5
+
+         10.00         23.12         50.00         95.88        166.00
+
+  Columns 6 through 7
+
+        265.62        400.00
+
+</pre><h2 id="9">function plotting</h2><pre class="codeinput">x=-pi:0.1:pi;
+y=sin(x);
+plot(x,y)
+xlabel(<span class="string">'x [rad]'</span>)
+ylabel(<span class="string">'y=sin(x)'</span>)
+title(<span class="string">'plot of y=sin(x)'</span>)
+grid
+</pre><img vspace="5" hspace="5" src="lec8Examples_01.png" style="width:560px;height:420px;" alt=""> <p class="footer"><br>	 
+      Author: <a href="https://mnourgwad.github.io">Prof.Dr.Ing. <strong>Mohammed Nour AbdelGwad Ahmed</strong></a> 
+	   | <a href="mailto:mnahmed@eng.zu.edu.eg?Subject=[MATLAB%20CODE]" target="_top">mnahmed@eng.zu.edu.eg</a><br>
+	  Computer and Systems Engineering Dept.  |  Faculty of Engineering | Zagazig University | Egypt<br>
+	  &reg;2017 design and content: [(CC) BY NC SA] | run on MATLAB&reg; R2016b</p></div><!--
+##### SOURCE BEGIN #####
+%% input and output
+disp('Hello World')
+
+% var=input('Enter any value: ')
+% disp(var)
+
+%% format of output results
+format short %4 decimal digits
+x=453*1.54^9
+
+format long  % 16 decimal digits
+x=453*1.54^9
+
+format bank  %2 decimal digits
+x=453*1.54^9
+
+%% Matrix input
+
+A=[1,2,3; 4,5,6; 7,8,9]
+
+%% For loops
+
+for z= 1:2:100
+    Y = z^2;
+    disp(Y)
+end
+
+%% while loops
+
+z=1;
+while (z<= 100)
+    Y = z^2;
+    z = z+2;
+    disp(Y)
+end
+
+%% Linear Algebraic Equations
+
+B=[1 -4  3;3 1 2; 1 5 -1];
+C=[11;1;4];
+x=B\C
+x= inv(B)*C %another solution
+
+%% Linear Algebraic Equations
+
+B= [1 -4  3; 3 1 2; 1 5 -1];
+B=B'
+C=[11;1;4];
+C= C'
+x=C / B
+%% Polynomial & Arrays
+
+poly([-1,-2])
+
+F=polyval([7 -4 3 4], [1:.5:4])
+
+%% function plotting
+
+x=-pi:0.1:pi;
+y=sin(x);
+plot(x,y)
+xlabel('x [rad]')
+ylabel('y=sin(x)')
+title('plot of y=sin(x)')
+grid
+##### SOURCE END #####
+--></body></html>

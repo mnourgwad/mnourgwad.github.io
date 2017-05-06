@@ -1,0 +1,254 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>lec9Examples</title><meta name="generator" content="MATLAB 9.1"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-05-06"><meta name="DC.source" content="lec9Examples.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">function plotting</a></li><li><a href="#2">Symbolic Processing</a></li><li><a href="#3">Create symbolic variables</a></li><li><a href="#4">Symbolic expansion and simplification of polynomials and elementary functions</a></li><li><a href="#5">Create symbolic polynomial from vector of coefficients and vice versa</a></li><li><a href="#6">Symbolic substitution</a></li><li><a href="#7">Equations and systems Symbolic solver</a></li><li><a href="#8">Symbolic Differences and Approximate Derivatives</a></li><li><a href="#9">Definite and indefinite integrals</a></li></ul></div><h2 id="1">function plotting</h2><pre class="codeinput">figure
+f=<span class="string">'7*x^3-4*x^2+3*x+4'</span>;
+fplot(f,[-3,3]);
+</pre><img vspace="5" hspace="5" src="lec9Examples_01.png" style="width:560px;height:420px;" alt=""> <h2 id="2">Symbolic Processing</h2><h2 id="3">Create symbolic variables</h2><pre class="codeinput">syms <span class="string">x</span> <span class="string">y</span> <span class="string">a</span> <span class="string">b</span> <span class="string">c</span> <span class="string">n</span>
+</pre><h2 id="4">Symbolic expansion and simplification of polynomials and elementary functions</h2><pre class="codeinput">expand((x^2+5)* (y^3+2))
+simplify((x^3+2*x^2+5*x+10)/(x^2+5))
+</pre><pre class="codeoutput"> 
+ans =
+ 
+x^2*y^3 + 2*x^2 + 5*y^3 + 10
+ 
+ 
+ans =
+ 
+x + 2
+ 
+</pre><h2 id="5">Create symbolic polynomial from vector of coefficients and vice versa</h2><pre class="codeinput">poly2sym([2,6,4])
+sym2poly(9*x^2 - 4*x + 5)
+</pre><pre class="codeoutput"> 
+ans =
+ 
+2*x^2 + 6*x + 4
+ 
+
+ans =
+
+          9.00         -4.00          5.00
+
+</pre><h2 id="6">Symbolic substitution</h2><pre class="codeinput">E=a*sin(b); subs(E,{a,b},{x,2})
+
+E=x^2+6*x+7; subs(E,x,2)
+</pre><pre class="codeoutput"> 
+ans =
+ 
+x*sin(2)
+ 
+ 
+ans =
+ 
+23
+ 
+</pre><h2 id="7">Equations and systems Symbolic solver</h2><pre class="codeinput">eq1=<span class="string">'x+5=0'</span>; solve(eq1)
+
+solve(b^2+8*c+2*b,b)
+
+eq1=<span class="string">'6*x+2*y=14'</span>; eq2=<span class="string">'3*x+7*y=31'</span>;
+[x,y]=solve(eq1,eq2)
+
+syms <span class="string">x</span> <span class="string">y</span>
+s=solve((x-3)^2+(y-5)^2-4, (x-6)^2+(y-3)^2-9);
+s.x
+s.y
+
+figure;
+theta = 0:0.005:2*pi;
+hold <span class="string">on</span>;
+plot(3+2*cos(theta),5+2*sin(theta),<span class="string">'r'</span>);
+plot(6+3*cos(theta),3+3*sin(theta),<span class="string">'b'</span>);
+plot(s.x,s.y,<span class="string">'k*'</span>);
+txt1 = [<span class="string">'   ('</span> char(s.x(1)) <span class="string">', '</span> char(s.y(1)) <span class="string">')'</span>];
+text(s.x(1),s.y(1),txt1)
+txt1 = [<span class="string">'   ('</span> char(s.x(2)) <span class="string">', '</span> char(s.y(2)) <span class="string">')'</span>];
+text(s.x(2),s.y(2),txt1)
+axis <span class="string">equal</span>; box <span class="string">on</span>;
+grid
+</pre><pre class="codeoutput"> 
+ans =
+ 
+-5
+ 
+ans =
+ 
+ - (1 - 8*c)^(1/2) - 1
+   (1 - 8*c)^(1/2) - 1
+ 
+x =
+ 
+1
+ 
+ 
+y =
+ 
+4
+ 
+ 
+ans =
+ 
+     3
+ 63/13
+ 
+ 
+ans =
+ 
+     3
+ 75/13
+ 
+</pre><img vspace="5" hspace="5" src="lec9Examples_02.png" style="width:560px;height:420px;" alt=""> <h2 id="8">Symbolic Differences and Approximate Derivatives</h2><pre class="codeinput">syms <span class="string">x</span> <span class="string">n</span>
+f = diff(x^n)
+</pre><pre class="codeoutput"> 
+f =
+ 
+n*x^(n - 1)
+ 
+</pre><h2 id="9">Definite and indefinite integrals</h2><pre class="codeinput">syms <span class="string">x</span> <span class="string">y</span>
+f = int(x^2,2,5)
+f = int(x^2)
+</pre><pre class="codeoutput"> 
+f =
+ 
+39
+ 
+ 
+f =
+ 
+x^3/3
+ 
+</pre><p class="footer"><br>	 
+      Author: <a href="https://mnourgwad.github.io">Prof.Dr.Ing. <strong>Mohammed Nour AbdelGwad Ahmed</strong></a> 
+	   | <a href="mailto:mnahmed@eng.zu.edu.eg?Subject=[MATLAB%20CODE]" target="_top">mnahmed@eng.zu.edu.eg</a><br>
+	  Computer and Systems Engineering Dept.  |  Faculty of Engineering | Zagazig University | Egypt<br>
+	  &reg;2017 design and content: [(CC) BY NC SA] | run on MATLAB&reg; R2016b</p></div><!--
+##### SOURCE BEGIN #####
+%% function plotting
+
+figure
+f='7*x^3-4*x^2+3*x+4';
+fplot(f,[-3,3]);
+
+%% Symbolic Processing
+
+%% Create symbolic variables
+syms x y a b c n
+
+%% Symbolic expansion and simplification of polynomials and elementary functions
+expand((x^2+5)* (y^3+2))
+simplify((x^3+2*x^2+5*x+10)/(x^2+5))
+
+%% Create symbolic polynomial from vector of coefficients and vice versa
+
+poly2sym([2,6,4])
+sym2poly(9*x^2 - 4*x + 5)
+
+%% Symbolic substitution
+
+E=a*sin(b); subs(E,{a,b},{x,2})
+
+E=x^2+6*x+7; subs(E,x,2)
+
+%% Equations and systems Symbolic solver
+
+eq1='x+5=0'; solve(eq1)
+
+solve(b^2+8*c+2*b,b)
+
+eq1='6*x+2*y=14'; eq2='3*x+7*y=31';
+[x,y]=solve(eq1,eq2)
+
+syms x y
+s=solve((x-3)^2+(y-5)^2-4, (x-6)^2+(y-3)^2-9);
+s.x
+s.y
+
+figure;
+theta = 0:0.005:2*pi;
+hold on;
+plot(3+2*cos(theta),5+2*sin(theta),'r');
+plot(6+3*cos(theta),3+3*sin(theta),'b');
+plot(s.x,s.y,'k*');
+txt1 = ['   (' char(s.x(1)) ', ' char(s.y(1)) ')'];
+text(s.x(1),s.y(1),txt1)
+txt1 = ['   (' char(s.x(2)) ', ' char(s.y(2)) ')'];
+text(s.x(2),s.y(2),txt1)
+axis equal; box on;
+grid
+%% Symbolic Differences and Approximate Derivatives
+
+syms x n
+f = diff(x^n)
+
+%% Definite and indefinite integrals
+
+syms x y
+f = int(x^2,2,5)
+f = int(x^2)
+##### SOURCE END #####
+--></body></html>
