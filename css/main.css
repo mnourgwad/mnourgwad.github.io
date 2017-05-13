@@ -130,3 +130,19 @@ body.discuss li.discuss
     background-color: #4CAF50;
     color: white;
 }
+
+
+
+div.transbox {
+  margin: 60px;
+  background-color: #ffffff;
+  border: 1px solid black;
+  opacity: 0.6;
+  filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+
+div.transbox p {
+  margin: 5%;
+  font-weight: bold;
+  color: #000000;
+}
