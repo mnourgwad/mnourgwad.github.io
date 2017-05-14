@@ -32,6 +32,21 @@ nav ul li, footer ul li { display: inline; margin-right: 20px; }
 footer { border-top: 1px solid #d5d5d5; font-size: .8em; }
 */
 
+nav {
+    display: block;
+    margin-top: 1em;
+	padding-top: 1em;
+    border-top: thin solid #98AFC7;
+	background: -webkit-gradient(linear, left top, left bottom, from(#eee), color-stop(0.5, #fff), to(#fff));
+	background: -moz-linear-gradient(top, #eee, #fff 50%);
+	margin-left: -1em;
+	padding-left: 1em;
+	margin-right: -1em;
+	padding-right: 1em;
+	font-size: 1em;
+	text-align: center;
+}
+
 footer {
     display: block;
     margin-top: 1em;
@@ -44,21 +59,6 @@ footer {
 	margin-right: -1em;
 	padding-right: 1em;
 	font-size: x-small;
-	text-align: center;
-}
-
-nav {
-    display: block;
-    margin-top: 1em;
-	padding-top: 1em;
-    border-top: thin solid #98AFC7;
-	background: -webkit-gradient(linear, left top, left bottom, from(#eee), color-stop(0.5, #fff), to(#fff));
-	background: -moz-linear-gradient(top, #eee, #fff 50%);
-	margin-left: -1em;
-	padding-left: 1em;
-	margin-right: -1em;
-	padding-right: 1em;
-	font-size: 1.2em;
 	text-align: center;
 }
 
