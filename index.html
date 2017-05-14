@@ -43,12 +43,4 @@ title: Mohammed Nour, Dr.Ing.
 	google.maps.event.addDomListener(window, 'load', init_map);
 	</script>		
 
-<ul>
-      {% for p in site.pages %}
-        <li>
-    <a {% if p.url == page.url %}class="active"{% endif %} href="{{ p.url }}">{{ p.title }}</a>
-        </li>
-      {% endfor %}
-    </ul>
-	
 		</div> 

@@ -79,6 +79,16 @@
 
 </div>
   
+  <div
+  <ul>
+        {% for p in site.pages %}
+          <li>
+      <a {% if p.url == page.url %}style="color: green;"{% endif %} href="{{ p.url }}">{{ p.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+  </div>
+  
   <footer>
    <ul>
    <li><a target="_blank" href="mailto:mnahmed@eng.zu.edu.eg" title="send email to me"><i class="fa fa-envelope" aria-hidden="true"></i> Email</a></li>
