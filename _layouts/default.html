@@ -88,8 +88,12 @@
         {% endfor %}
   </ul>
 
+
+{% assign url_parts = page.url %}
+
+
    <ul>
-     <li> {{ page.url }}</li>
+     <li> {{ url_parts }}</li>
    </ul>
    
 
