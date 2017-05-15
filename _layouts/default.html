@@ -79,35 +79,39 @@
 
 </div>
   
-  <div
+  <div>
   <ul>
         {% for p in site.pages %}
           <li>
       <a {% if p.url == page.url %}style="color: green;"{% endif %} href="{{ p.url }}">{{ p.title }}</a>
           </li>
         {% endfor %}
-      </ul>
-	  
-	  {% assign url_parts = page.url | split: '/' %}
-	  {% assign url_parts_size = url_parts | size %}
-	  {% assign rm = url_parts | last %}
-	  {% assign base_url = page.url | replace: rm %}
+  </ul>
+      
+	 
+	 {% assign url_parts = page.url | split: '/' %}
+	 {% assign url_parts_size = url_parts | size %}
+	 {% assign rm = url_parts | last %}
+	 {% assign base_url = page.url | replace: rm %}
 
+	 <ul>
+	  <li> {{ page.url }}
+	  <li> {{ base_url }}
+	 </ul> 
 
-	  <ul>
-		  <li> {{ page.url }}
-		  <li> {{ base_url }}
-			  
-	    {% if node.url contains base_url %}
-	      {% assign node_url_parts = node.url | split: '/' %}
-	      {% assign node_url_parts_size = node_url_parts | size %}
-	      {% assign filename = node_url_parts | last %}
-	      {% if url_parts_size == node_url_parts_size and filename != 'index.html' %}
-	        <li><a href='{{ node.url }}'>{{ node.title }}</a></li>
-	      {% endif %}
-	    {% endif %}
-        {% endfor %}
-	  </ul>
+	 <ul>
+	 {% for node in site.pages %}
+	   {% if node.url contains base_url %}
+	     {% assign node_url_parts = node.url | split: '/' %}
+	     {% assign node_url_parts_size = node_url_parts | size %}
+	     {% assign filename = node_url_parts | last %}
+	     {% if url_parts_size == node_url_parts_size and filename != 'index.html' %}
+	       <li><a href='{{node.url}}'>{{node.title}}</a></li>
+	     {% endif %}
+	   {% endif %}
+	 {% endfor %}
+	 </ul> 
+	 
   </div>
   
   <footer>
