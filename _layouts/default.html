@@ -5,12 +5,9 @@
     
     <!-- <link rel="stylesheet" type="text/css" href="/css/main.css"> -->
 	<link rel="stylesheet" href="{{ site.baseurl }}/css/main.css" media="screen">
-	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/specialTableStyle.css">
+<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/specialTableStyle.css">
    
-    <meta charset="UTF-8">
-    <meta name="description" content="Dr. Mohammed Nour personal web page">
-    <meta name="keywords" content="Robotics,courses,bio">
-    <meta name="author" content="Dr. Mohammed Nour ">
+   
    
     <meta name="viewport" content="width=device-width">
     <!--[if lt IE 9]>
@@ -39,8 +36,8 @@
 	  <!-- favicon stuff 
 	  <link rel="shortcut icon" type="image/png" href="{{ "/favicon.png" | prepend: site.baseurl }}" >
 	  -->
-	  <link rel="shortcut icon" type="image/png" href="favicon.png">
-	  
+	 <link rel="shortcut icon" type="image/png" href="/favicon.png">
+		  
 	  <link rel="apple-touch-icon" sizes="57x57" href="{{ site.baseurl }}/images/apple-icon-57x57.png">
 	  <link rel="apple-touch-icon" sizes="60x60" href="{{ site.baseurl }}/images/apple-icon-60x60.png">
 	  <link rel="apple-touch-icon" sizes="72x72" href="{{ site.baseurl }}/images/apple-icon-72x72.png">
@@ -92,10 +89,7 @@
   </ul>
 
 
-{% assign url_parts = page.url | split: '/' %}
-{% assign url_parts_size = url_parts | size %}
-{% assign rm = url_parts | last %}
-{% assign base_url = page.url | replace: rm %}
+{% assign url_parts = page.url %}
 
    <ul>
      <li> {{ url_parts }}</li>
