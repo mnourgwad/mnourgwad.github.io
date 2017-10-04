@@ -14,8 +14,10 @@ h1, h2, h3, h4 {font-family: 'Lucida Sans';
     			font-weight: bold;
    			 	font-size: medium; }
 
+h2, h3, h4 {color: #1B4F72; }
 h1 { font-size: 2em;  }	
 h3 { font-size: 1.1em; }
+
 
 /*
 h1 { font-size: 3em;  }
