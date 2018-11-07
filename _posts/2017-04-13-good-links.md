@@ -5,7 +5,7 @@ date: 2017-04-13
 use_math: false
 ---
 
-<p> This page coolects some of the good links I found:</p>
+<p> This page collects some of the good links I found:</p>
 
 ## Programming
 * [C++ Coding Standards and Practices](http://www.yolinux.com/TUTORIALS/LinuxTutorialC++CodingStyle.html)
