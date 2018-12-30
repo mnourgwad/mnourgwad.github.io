@@ -68,12 +68,10 @@ $$\int_0^\infty e^{-x^2} dx $$
 \end{equation}
 </p>
 
-When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are
+When $a \ne 0$, there are two solutions to \\(a~x^2 + b~x + c = 0\\) and they are
 $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
 
-Let's test some inline math $x$, $y$, $x_1$, $y_1$.
-
-  Now a inline math with special character: $|\psi\rangle, x', x^*$.
+Let's test some inline math $x$, $y$, $x_1$, $y_1$. Now inline math with special character: $|\psi\rangle$, $x'$, $x^*$.
 
 Test a display math:
 $$
@@ -82,9 +80,9 @@ $$
 
 
 Test a display math without equation number:
-\begin{equation*}
+\begin{equation\*}
    |\psi_1\rangle = a|0\rangle + b|1\rangle
-\end{equation*}
+\end{equation\*}
 
 
 Test a display math with equation number:
@@ -105,14 +103,14 @@ And test a display math without equaltion number:
 
 Test a display math with equation number:
 \begin{align}
-    |\psi_1\rangle &= a|0\rangle + b|1\rangle \\
+    |\psi_1\rangle &= a|0\rangle + b|1\rangle \\\\
     |\psi_2\rangle &= c|0\rangle + d|1\rangle
 \end{align}
 
 
 And test a display math without equaltion number:
 \begin{align\*}
-    |\psi_1\rangle &= a|0\rangle + b|1\rangle \\
+    |\psi_1\rangle &= a|0\rangle + b|1\rangle \\\\
     |\psi_2\rangle &= c|0\rangle + d|1\rangle
 \end{align\*}
 
