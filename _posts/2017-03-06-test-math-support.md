@@ -73,7 +73,7 @@ $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
 
 Let's test some inline math $x$, $y$, $x_1$, $y_1$.
 
-Now a inline math with special character: $|\psi\rangle$, $x'$, $x^*$.
+  Now a inline math with special character: $|\psi\rangle, x', x^*$.
 
 Test a display math:
 $$
@@ -81,10 +81,10 @@ $$
 $$
 
 
-Test a display math with equation number:
-\begin{equation}
+Test a display math without equation number:
+\begin{equation*}
    |\psi_1\rangle = a|0\rangle + b|1\rangle
-\end{equation}
+\end{equation*}
 
 
 Test a display math with equation number:
