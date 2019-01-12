@@ -116,7 +116,7 @@ And test a display math without equaltion number:
 
 
 
-#Module 2 : Modeling Discrete Time Systems by Pulse Transfer Function
+# Module 2 : Modeling Discrete Time Systems by Pulse Transfer Function
 
 ## Lecture 1 : Motivation for using Z-transform
 
