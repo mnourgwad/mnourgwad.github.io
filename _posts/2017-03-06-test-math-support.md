@@ -118,10 +118,10 @@ And test a display math without equaltion number:
 
 #Module 2 : Modeling Discrete Time Systems by Pulse Transfer Function
 
-##Lecture 1 : Motivation for using Z-transform
+## Lecture 1 : Motivation for using Z-transform
 
 
-###1. Motivation for using Z- Transform
+### 1. Motivation for using Z- Transform
 
 In general, control system design methods can be classified as:
 
@@ -133,12 +133,11 @@ In general, control system design methods can be classified as:
 Laplace transform is the basic tool of the classical methods in continuous domain. In principle, it can also be used for modeling digital control systems. However typical Laplace transform expressions of systems with digital or sampled signals contain exponential terms in the form of eTs which makes the manipulation in the Laplace domain difficult. This can be regarded as a motivation of using Z-transform.
 
 Let the output of an ideal sampler be denoted by $f^*(t)$:
-
 $$
-\begin{align\*}
-L[f^*(t)]	&=  F^*(s)
- 	        &=  \sum_{k=0}^{\infty}f(kT)e^{-kTs}\\
- \end{align}
+  \begin{align}
+    L[f^*(t)]	&=  F^*(s) \\
+    &=  \sum_{k=0}^{\infty}f(kT)e^{-kTs}
+  \end{align}
 $$
 
 Since $F^*(s)$ contains the term $e^{-kTs}$, it is not a rational function of s. When terms with $e^{-Ts}$ appear in a transfer function other than a multiplying factor, difficulties arise while taking the inverse Laplace. It is desirable to transfer the irrational function $F^*(s)$ to a rational function for which one obvious choice is:
