@@ -125,8 +125,8 @@ And test a display math without equaltion number:
 
 In general, control system design methods can be classified as:
 
-- conventional or classical control techniques
-- modern control techniques
+  * conventional or classical control techniques
+  * modern control techniques
 
 **Classical methods** use transform techniques and are based on transfer function models, whereas **modern techniques** are based on modeling of system by state variable methods.
 
