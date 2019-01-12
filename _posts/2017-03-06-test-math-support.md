@@ -116,29 +116,32 @@ And test a display math without equaltion number:
 
 
 
-<b>Module 2 : Modeling Discrete Time Systems by Pulse Transfer Function</b>
+#Module 2 : Modeling Discrete Time Systems by Pulse Transfer Function
 
-Lecture 1 : Motivation for using Z-transform
+##Lecture 1 : Motivation for using Z-transform
 
 
-1. Motivation for using Z- Transform
+###1. Motivation for using Z- Transform
 
 In general, control system design methods can be classified as:
 
-conventional or classical control techniques
-modern control techniques
-Classical methods use transform techniques and are based on transfer function models, whereas modern techniques are based on modeling of system by state variable methods.
+- conventional or classical control techniques
+- modern control techniques
+
+**Classical methods** use transform techniques and are based on transfer function models, whereas **modern techniques** are based on modeling of system by state variable methods.
 
 Laplace transform is the basic tool of the classical methods in continuous domain. In principle, it can also be used for modeling digital control systems. However typical Laplace transform expressions of systems with digital or sampled signals contain exponential terms in the form of eTs which makes the manipulation in the Laplace domain difficult. This can be regarded as a motivation of using Z-transform.
 
-Let the output of an ideal sampler be denoted by \(f*(t)\) .
+Let the output of an ideal sampler be denoted by $f^*(t)$:
+
+$$
 \begin{align\*}
 L[f^*(t)]	&=  F^*(s)
  	        &=  \sum_{k=0}^{\infty}f(kT)e^{-kTs}\\
  \end{align}
+$$
 
-Since F*(s) contains the term e-kTs, it is not a rational function of s. When terms with e-Ts appear in a transfer function other than a multiplying factor, difficulties arise while taking the inverse Laplace. It is desirable to transfer the irrational function F*(s) to a rational function for which one obvious choice is:
-
+Since $F^*(s)$ contains the term $e^{-kTs}$, it is not a rational function of s. When terms with $e^{-Ts}$ appear in a transfer function other than a multiplying factor, difficulties arise while taking the inverse Laplace. It is desirable to transfer the irrational function $F^*(s)$ to a rational function for which one obvious choice is:
 \begin{equation\*}
 z =  e^{Ts}  \Rightarrow \; s=  \frac{1}{T} ln \; z
 \end{equation\*}
