@@ -140,7 +140,7 @@ $$
   \end{align}
 $$
 
-Since $F^*(s)$ contains the term $e^{-kTs}$, it is not a rational function of s. When terms with $e^{-Ts}$ appear in a transfer function other than a multiplying factor, difficulties arise while taking the inverse Laplace. It is desirable to transfer the irrational function $F^*(s)$ to a rational function for which one obvious choice is:
+Since $F^*(s) $ contains the term $e^{-kTs}$, it is not a rational function of $s$. When terms with $e^{-Ts}$ appear in a transfer function other than a multiplying factor, difficulties arise while taking the inverse Laplace. It is desirable to transfer the irrational function $F^*(s)$ to a rational function for which one obvious choice is:
 \begin{equation\*}
 z =  e^{Ts}  \Rightarrow \; s=  \frac{1}{T} ln \; z
 \end{equation\*}
