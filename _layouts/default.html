@@ -1,43 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>{{ page.title }}</title>
-    
-	
-	<!-- Global Site Tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106573983-1"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments)};
-	  gtag('js', new Date());
 
-	  gtag('config', 'UA-106573983-1');
-	</script>
+<head>
+  <title>{{ page.title }}</title>
 
-	
-	
-	
-    <!-- <link rel="stylesheet" type="text/css" href="/css/main.css"> -->
-	<link rel="stylesheet" href="{{ site.baseurl }}/css/main.css" media="screen">
-<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/specialTableStyle.css">
-<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/menustyle.css">
-   
-   
-   
-    <meta name="viewport" content="width=device-width">
-    <!--[if lt IE 9]>
+
+  <!-- Global Site Tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106573983-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments)
+    };
+    gtag('js', new Date());
+
+    gtag('config', 'UA-106573983-1');
+  </script>
+
+
+
+
+  <!-- <link rel="stylesheet" type="text/css" href="/css/main.css"> -->
+  <link rel="stylesheet" href="{{ site.baseurl }}/css/main.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/specialTableStyle.css">
+  <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/menustyle.css">
+
+
+
+  <meta name="viewport" content="width=device-width">
+  <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
- 
- 
- <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
- <link rel="stylesheet" href="{{ site.baseurl }}/css/academicons.css"/>
- 
- 
- 
- <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
+
+
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{{ site.baseurl }}/css/academicons.css" />
+
+
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
   tex2jax: {
     inlineMath: [['$','$'], 
                 ['\\(','\\)']]
@@ -45,75 +49,75 @@
     TeX: { equationNumbers: { autoNumber: "AMS" } }
   });
 </script>
-   <script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML" async>
-</script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML" async>
+  </script>
 
 
 
   <!-- {% if page.use_math %}
         {% include mathjax_support %}
       {% endif %} -->
-	  
-	  
-	  <!-- favicon stuff 
+
+
+  <!-- favicon stuff 
 	  <link rel="shortcut icon" type="image/png" href="{{ "/favicon.png" | prepend: site.baseurl }}" >
 	  -->
-	 <link rel="shortcut icon" type="image/png" href="{{ site.baseurl }}/favicon.png">
-		  
-	  <link rel="apple-touch-icon" sizes="57x57" href="{{ site.baseurl }}/images/apple-icon-57x57.png">
-	  <link rel="apple-touch-icon" sizes="60x60" href="{{ site.baseurl }}/images/apple-icon-60x60.png">
-	  <link rel="apple-touch-icon" sizes="72x72" href="{{ site.baseurl }}/images/apple-icon-72x72.png">
-	  <link rel="apple-touch-icon" sizes="76x76" href="{{ site.baseurl }}/images/apple-icon-76x76.png">
-	  <link rel="apple-touch-icon" sizes="114x114" href="{{ site.baseurl }}/images/apple-icon-114x114.png">
-	  <link rel="apple-touch-icon" sizes="120x120" href="{{ site.baseurl }}/images/apple-icon-120x120.png">
-	  <link rel="apple-touch-icon" sizes="144x144" href="{{ site.baseurl }}/images/apple-icon-144x144.png">
-	  <link rel="apple-touch-icon" sizes="152x152" href="{{ site.baseurl }}/images/apple-icon-152x152.png">
-	  <link rel="apple-touch-icon" sizes="180x180" href="{{ site.baseurl }}/images/apple-icon-180x180.png">
-	  <link rel="icon" type="image/png" sizes="192x192"  href="{{ site.baseurl }}/images/android-icon-192x192.png">
-	  <link rel="icon" type="image/png" sizes="32x32" href="{{ site.baseurl }}/images/favicon-32x32.png">
-	  <link rel="icon" type="image/png" sizes="96x96" href="{{ site.baseurl }}/images/favicon-96x96.png">
-	  <link rel="icon" type="image/png" sizes="16x16" href="{{ site.baseurl }}/images/favicon-16x16.png">
-	  <link rel="manifest" href="{{ site.baseurl }}/images/manifest.json">
-	  <meta name="msapplication-TileColor" content="#ffffff">
-	  <meta name="msapplication-TileImage" content="{{ site.baseurl }}/images/ms-icon-144x144.png">
-	  <meta name="theme-color" content="#ffffff">
-	  
-	  
-  </head>
+  <link rel="shortcut icon" type="image/png" href="{{ site.baseurl }}/favicon.png">
+
+  <link rel="apple-touch-icon" sizes="57x57" href="{{ site.baseurl }}/images/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="{{ site.baseurl }}/images/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="{{ site.baseurl }}/images/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{ site.baseurl }}/images/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="{{ site.baseurl }}/images/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="{{ site.baseurl }}/images/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="{{ site.baseurl }}/images/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="{{ site.baseurl }}/images/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ site.baseurl }}/images/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="{{ site.baseurl }}/images/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ site.baseurl }}/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="{{ site.baseurl }}/images/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ site.baseurl }}/images/favicon-16x16.png">
+  <link rel="manifest" href="{{ site.baseurl }}/images/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="{{ site.baseurl }}/images/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
 
 
-  <body>
-    <nav>
-<ul id="menu">
-<li><a href="/"><i class="icon-fixed-width icon-home"></i> Home</a></li>
-<li><a href="/courses.html"><i class="icon-fixed-width icon-book"></i> Courses</a>
-			<ul>
-				<li><a href="{{ site.baseurl }}/CSE302">CSE302:  Automatic Control Engineering</a></li>				
-				<li><a href="{{ site.baseurl }}/CSE421">CSE421:  Digital Control</a></li>
-				<li><a href="{{ site.baseurl }}/MEC301">MEC301:  Mechatronic Systems Design</a></li>
-				<li><a href="{{ site.baseurl }}/CSE4316">CSE4316: Robotics (Elective 4)</a></li>
-				<li><a href="{{ site.baseurl }}/CSE100">CSE100 : Computers and Programming الحاسبات والبرمجة 1</a></li>
-				<li><a href="{{ site.baseurl }}/latex">LaTeX Crash Course</a></li>	
-				
-							
-			</ul>
-</li>
+</head>
 
-<li><a href="/about"><i class="icon-fixed-width icon-pencil"></i> About</a></li>
-<li><a href="/cv"><i class="icon-user"></i> CV</a></li>
-<li><a href="/blog"><i class="icon-fixed-width icon-cogs"></i> Blog</a></li>
-</ul>
-    </nav>
-	
-	
-	
-<div class="container">
 
-  {{ content }}
+<body>
+  <nav>
+    <ul id="menu">
+      <li><a href="/"><i class="icon-fixed-width icon-home"></i> Home</a></li>
+      <li><a href="/courses.html"><i class="icon-fixed-width icon-book"></i> Courses</a>
+        <ul>
+          <li><a href="{{ site.baseurl }}/CSE302">CSE302: Automatic Control Engineering</a></li>
+          <li><a href="{{ site.baseurl }}/CSE421">CSE421: Digital Control</a></li>
+          <li><a href="{{ site.baseurl }}/MEC301">MEC301: Mechatronic Systems Design</a></li>
+          <li><a href="{{ site.baseurl }}/CSE4316">CSE4316: Robotics (Elective 4)</a></li>
+          <li><a href="{{ site.baseurl }}/CSE100">CSE100 : Computers and Programming الحاسبات والبرمجة 1</a></li>
+          <li><a href="{{ site.baseurl }}/latex">LaTeX Crash Course</a></li>
 
-</div>
-  
+
+        </ul>
+      </li>
+
+      <li><a href="/about"><i class="icon-fixed-width icon-pencil"></i> About</a></li>
+      <li><a href="/cv"><i class="icon-user"></i> CV</a></li>
+      <li><a href="/blog"><i class="icon-fixed-width icon-cogs"></i> Blog</a></li>
+    </ul>
+  </nav>
+
+
+
+  <div class="container">
+
+    {{ content }}
+
+  </div>
+
   <!-- <div>
   <ul>
         {% for p in site.pages %}
@@ -133,17 +137,22 @@
 </div>
    -->
   <footer>
-   <ul>
-   <li><a target="_blank" href="mailto:mnahmed@eng.zu.edu.eg" title="send email to me"><i class="fa fa-envelope" aria-hidden="true"></i> Email</a></li>
-   <li><a target="_blank" href="https://www.researchgate.net/profile/Mohammed_Nour_Abdelgwad_Ahmed" title="my profile on ResearchGate"><i class="ai ai-researchgate-square"></i> ResearchGate</a></li>
-   <li><a target="_blank" href="https://github.com/mnourgwad" title="my Github repository"><i class="fa fa-github"></i> Github</a></li>
-   <li><a target="_blank" href="https://scholar.google.de/citations?user=hcl9vXUAAAAJ&hl=en" title="my profile on Google Scholar"><i class="ai ai-google-scholar-square"></i> Google Scholar</a></li>
-   <li><a target="_blank" href="./site.html" title="License"><i class="fa fa-copyright"></i>2017 design and most content: [(CC) BY NC SA]</a></li>
-   </ul>
-   
-   
+    <ul>
+      <li><a target="_blank" href="mailto:mnahmed@eng.zu.edu.eg" title="send email to me"><i class="fa fa-envelope"
+            aria-hidden="true"></i> Email</a></li>
+      <li><a target="_blank" href="https://www.researchgate.net/profile/Mohammed_Nour_Abdelgwad_Ahmed"
+          title="my profile on ResearchGate"><i class="ai ai-researchgate-square"></i> ResearchGate</a></li>
+      <li><a target="_blank" href="https://github.com/mnourgwad" title="my Github repository"><i
+            class="fa fa-github"></i> Github</a></li>
+      <li><a target="_blank" href="https://scholar.google.de/citations?user=hcl9vXUAAAAJ&hl=en"
+          title="my profile on Google Scholar"><i class="ai ai-google-scholar-square"></i> Google Scholar</a></li>
+      <li><a target="_blank" href="./site.html" title="License"><i class="fa fa-copyright"></i>2017 design and most
+          content: [(CC) BY NC SA]</a></li>
+    </ul>
+
+
   </footer>
   <script src="javascripts/scale.fix.js"></script>
-  </body>
+</body>
 
 </html>
