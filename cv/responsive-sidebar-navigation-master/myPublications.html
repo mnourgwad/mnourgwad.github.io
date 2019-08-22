@@ -1,0 +1,843 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Mohammed Ahmed Publications</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript">
+<!--
+// QuickSearch script for JabRef HTML export 
+// Version: 3.0
+//
+// Copyright (c) 2006-2011, Mark Schenk
+//
+// This software is distributed under a Creative Commons Attribution 3.0 License
+// http://creativecommons.org/licenses/by/3.0/
+//
+// Features:
+// - intuitive find-as-you-type searching
+//    ~ case insensitive
+//    ~ ignore diacritics (optional)
+//
+// - search with/without Regular Expressions
+// - match BibTeX key
+//
+
+// Search settings
+var searchAbstract = true;	// search in abstract
+var searchComment = true;	// search in comment
+
+var noSquiggles = true; 	// ignore diacritics when searching
+var searchRegExp = false; 	// enable RegExp searches
+
+
+if (window.addEventListener) {
+	window.addEventListener("load",initSearch,false); }
+else if (window.attachEvent) {
+	window.attachEvent("onload", initSearch); }
+
+function initSearch() {
+	// check for quick search table and searchfield
+	if (!document.getElementById('qs_table')||!document.getElementById('quicksearch')) { return; }
+
+	// load all the rows and sort into arrays
+	loadTableData();
+	
+	//find the query field
+	qsfield = document.getElementById('qs_field');
+
+	// previous search term; used for speed optimisation
+	prevSearch = '';
+
+	//find statistics location
+	stats = document.getElementById('stat');
+	setStatistics(-1);
+	
+	// set up preferences
+	initPreferences();
+
+	// shows the searchfield
+	document.getElementById('quicksearch').style.display = 'block';
+	document.getElementById('qs_field').onkeyup = quickSearch;
+}
+
+function loadTableData() {
+	// find table and appropriate rows
+	searchTable = document.getElementById('qs_table');
+	var allRows = searchTable.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+	// split all rows into entryRows and infoRows (e.g. abstract, comment, bibtex)
+	entryRows = new Array(); infoRows = new Array(); absRows = new Array(); revRows = new Array();
+
+	// get data from each row
+	entryRowsData = new Array(); absRowsData = new Array(); revRowsData = new Array(); 
+	
+	BibTeXKeys = new Array();
+	
+	for (var i=0, k=0, j=0; i<allRows.length;i++) {
+		if (allRows[i].className.match(/entry/)) {
+			entryRows[j] = allRows[i];
+			entryRowsData[j] = stripDiacritics(getTextContent(allRows[i]));
+			allRows[i].id ? BibTeXKeys[j] = allRows[i].id : allRows[i].id = 'autokey_'+j;
+			j ++;
+		} else {
+			infoRows[k++] = allRows[i];
+			// check for abstract/comment
+			if (allRows[i].className.match(/abstract/)) {
+				absRows.push(allRows[i]);
+				absRowsData[j-1] = stripDiacritics(getTextContent(allRows[i]));
+			} else if (allRows[i].className.match(/comment/)) {
+				revRows.push(allRows[i]);
+				revRowsData[j-1] = stripDiacritics(getTextContent(allRows[i]));
+			}
+		}
+	}
+	//number of entries and rows
+	numEntries = entryRows.length;
+	numInfo = infoRows.length;
+	numAbs = absRows.length;
+	numRev = revRows.length;
+}
+
+function quickSearch(){
+	
+	tInput = qsfield;
+
+	if (tInput.value.length == 0) {
+		showAll();
+		setStatistics(-1);
+		qsfield.className = '';
+		return;
+	} else {
+		t = stripDiacritics(tInput.value);
+
+		if(!searchRegExp) { t = escapeRegExp(t); }
+			
+		// only search for valid RegExp
+		try {
+			textRegExp = new RegExp(t,"i");
+			closeAllInfo();
+			qsfield.className = '';
+		}
+			catch(err) {
+			prevSearch = tInput.value;
+			qsfield.className = 'invalidsearch';
+			return;
+		}
+	}
+	
+	// count number of hits
+	var hits = 0;
+
+	// start looping through all entry rows
+	for (var i = 0; cRow = entryRows[i]; i++){
+
+		// only show search the cells if it isn't already hidden OR if the search term is getting shorter, then search all
+		if(cRow.className.indexOf('noshow')==-1 || tInput.value.length <= prevSearch.length){
+			var found = false; 
+
+			if (entryRowsData[i].search(textRegExp) != -1 || BibTeXKeys[i].search(textRegExp) != -1){ 
+				found = true;
+			} else {
+				if(searchAbstract && absRowsData[i]!=undefined) {
+					if (absRowsData[i].search(textRegExp) != -1){ found=true; } 
+				}
+				if(searchComment && revRowsData[i]!=undefined) {
+					if (revRowsData[i].search(textRegExp) != -1){ found=true; } 
+				}
+			}
+			
+			if (found){
+				cRow.className = 'entry show';
+				hits++;
+			} else {
+				cRow.className = 'entry noshow';
+			}
+		}
+	}
+
+	// update statistics
+	setStatistics(hits)
+	
+	// set previous search value
+	prevSearch = tInput.value;
+}
+
+
+// Strip Diacritics from text
+// http://stackoverflow.com/questions/990904/javascript-remove-accents-in-strings
+
+// String containing replacement characters for stripping accents 
+var stripstring = 
+    'AAAAAAACEEEEIIII'+
+    'DNOOOOO.OUUUUY..'+
+    'aaaaaaaceeeeiiii'+
+    'dnooooo.ouuuuy.y'+
+    'AaAaAaCcCcCcCcDd'+
+    'DdEeEeEeEeEeGgGg'+
+    'GgGgHhHhIiIiIiIi'+
+    'IiIiJjKkkLlLlLlL'+
+    'lJlNnNnNnnNnOoOo'+
+    'OoOoRrRrRrSsSsSs'+
+    'SsTtTtTtUuUuUuUu'+
+    'UuUuWwYyYZzZzZz.';
+
+function stripDiacritics(str){
+
+    if(noSquiggles==false){
+        return str;
+    }
+
+    var answer='';
+    for(var i=0;i<str.length;i++){
+        var ch=str[i];
+        var chindex=ch.charCodeAt(0)-192;   // Index of character code in the strip string
+        if(chindex>=0 && chindex<stripstring.length){
+            // Character is within our table, so we can strip the accent...
+            var outch=stripstring.charAt(chindex);
+            // ...unless it was shown as a '.'
+            if(outch!='.')ch=outch;
+        }
+        answer+=ch;
+    }
+    return answer;
+}
+
+// http://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
+// NOTE: must escape every \ in the export code because of the JabRef Export...
+function escapeRegExp(str) {
+  return str.replace(/[-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+}
+
+function toggleInfo(articleid,info) {
+
+	var entry = document.getElementById(articleid);
+	var abs = document.getElementById('abs_'+articleid);
+	var rev = document.getElementById('rev_'+articleid);
+	var bib = document.getElementById('bib_'+articleid);
+	
+	if (abs && info == 'abstract') {
+		abs.className.indexOf('noshow') == -1?abs.className = 'abstract noshow':abs.className = 'abstract show';
+	} else if (rev && info == 'comment') {
+		rev.className.indexOf('noshow') == -1?rev.className = 'comment noshow':rev.className = 'comment show';
+	} else if (bib && info == 'bibtex') {
+		bib.className.indexOf('noshow') == -1?bib.className = 'bibtex noshow':bib.className = 'bibtex show';
+	} else { 
+		return;
+	}
+
+	// check if one or the other is available
+	var revshow; var absshow; var bibshow;
+	(abs && abs.className.indexOf('noshow') == -1)? absshow = true: absshow = false;
+	(rev && rev.className.indexOf('noshow') == -1)? revshow = true: revshow = false;	
+	(bib && bib.className.indexOf('noshow') == -1)? bibshow = true: bibshow = false;
+	
+	// highlight original entry
+	if(entry) {
+		if (revshow || absshow || bibshow) {
+		entry.className = 'entry highlight show';
+		} else {
+		entry.className = 'entry show';
+		}
+	}
+	
+	// When there's a combination of abstract/comment/bibtex showing, need to add class for correct styling
+	if(absshow) {
+		(revshow||bibshow)?abs.className = 'abstract nextshow':abs.className = 'abstract';
+	} 
+	if (revshow) {
+		bibshow?rev.className = 'comment nextshow': rev.className = 'comment';
+	}	
+	
+}
+
+function setStatistics (hits) {
+	if(hits < 0) { hits=numEntries; }
+	if(stats) { stats.firstChild.data = hits + '/' + numEntries}
+}
+
+function getTextContent(node) {
+	// Function written by Arve Bersvendsen
+	// http://www.virtuelvis.com
+	
+	if (node.nodeType == 3) {
+	return node.nodeValue;
+	} // text node
+	if (node.nodeType == 1 && node.className != "infolinks") { // element node
+	var text = [];
+	for (var chld = node.firstChild;chld;chld=chld.nextSibling) {
+		text.push(getTextContent(chld));
+	}
+	return text.join("");
+	} return ""; // some other node, won't contain text nodes.
+}
+
+function showAll(){
+	closeAllInfo();
+	for (var i = 0; i < numEntries; i++){ entryRows[i].className = 'entry show'; }
+}
+
+function closeAllInfo(){
+	for (var i=0; i < numInfo; i++){
+		if (infoRows[i].className.indexOf('noshow') ==-1) {
+			infoRows[i].className = infoRows[i].className + ' noshow';
+		}
+	}
+}
+
+function clearQS() {
+	qsfield.value = '';
+	showAll();
+}
+
+function redoQS(){
+	showAll();
+	quickSearch(qsfield);
+}
+
+function updateSetting(obj){
+	var option = obj.id;
+	var checked = obj.value;
+
+	switch(option)
+	 {
+	 case "opt_searchAbs":
+	   searchAbstract=!searchAbstract;
+	   redoQS();
+	   break;
+	 case "opt_searchComment":
+	   searchComment=!searchComment;
+	   redoQS();
+	   break;
+	 case "opt_useRegExp":
+	   searchRegExp=!searchRegExp;
+	   redoQS();
+	   break;
+	 case "opt_noAccents":
+	   noSquiggles=!noSquiggles;
+	   loadTableData();
+	   redoQS();
+	   break;
+	 }
+}
+
+function initPreferences(){
+	if(searchAbstract){document.getElementById("opt_searchAbs").checked = true;}
+	if(searchComment){document.getElementById("opt_searchComment").checked = true;}
+	if(noSquiggles){document.getElementById("opt_noAccents").checked = true;}
+	if(searchRegExp){document.getElementById("opt_useRegExp").checked = true;}
+	
+	if(numAbs==0) {document.getElementById("opt_searchAbs").parentNode.style.display = 'none';}
+	if(numRev==0) {document.getElementById("opt_searchComment").parentNode.style.display = 'none';}	
+}
+
+function toggleSettings(){
+	var togglebutton = document.getElementById('showsettings');
+	var settings = document.getElementById('settings');
+	
+	if(settings.className == "hidden"){
+		settings.className = "show";
+		togglebutton.innerText = "close settings";
+		togglebutton.textContent = "close settings";
+	}else{
+		settings.className = "hidden";
+		togglebutton.innerText = "settings...";		
+		togglebutton.textContent = "settings...";
+	}
+}
+
+-->
+</script>
+<style type="text/css">
+body { background-color: white; font-family: Arial, sans-serif; font-size: 13px; line-height: 1.2; padding: 1em; color: #2E2E2E; width: 80%; margin: auto auto; }
+
+form#quicksearch { width: auto; border-style: solid; border-color: gray; border-width: 1px 0px; padding: 0.7em 0.5em; display:none; position:relative; }
+span#searchstat {padding-left: 1em;}
+
+div#settings { margin-top:0.7em; /* border-bottom: 1px transparent solid; background-color: #efefef; border: 1px grey solid; */ }
+div#settings ul {margin: 0; padding: 0; }
+div#settings li {margin: 0; padding: 0 1em 0 0; display: inline; list-style: none; }
+div#settings li + li { border-left: 2px #efefef solid; padding-left: 0.5em;}
+div#settings input { margin-bottom: 0px;}
+
+div#settings.hidden {display:none;}
+
+#showsettings { border: 1px grey solid; padding: 0 0.5em; float:right; line-height: 1.6em; text-align: right; }
+#showsettings:hover { cursor: pointer; }
+
+.invalidsearch { background-color: red; }
+input[type="button"] { background-color: #efefef; border: 1px #2E2E2E solid;}
+
+table { border: 1px gray none; width: 100%; empty-cells: show; border-spacing: 0em 0.1em; margin: 1em 0em; }
+th, td { border: none; padding: 0.5em; vertical-align: top; text-align: justify; }
+
+td a { color: SteelBlue; text-decoration: none; }
+td a:hover  { text-decoration: underline; }
+
+tr.noshow { display: none;}
+tr.highlight td { background-color: #EFEFEF; border-top: 2px #2E2E2E solid; font-weight: bold; }
+tr.abstract td, tr.comment td, tr.bibtex td { background-color: #EFEFEF; text-align: justify; border-bottom: 2px #2E2E2E solid; }
+tr.nextshow td { border-bottom-style: none; }
+
+tr.bibtex pre { width: 100%; overflow: auto; white-space: pre-wrap;}
+p.infolinks { margin: 0.3em 0em 0em 0em; padding: 0px; }
+
+@media print {
+	p.infolinks, #qs_settings, #quicksearch, t.bibtex { display: none !important; }
+	tr { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+	<p><b><span lang=EN-US style='font-size:18.0pt;font-family:	"Times New Roman",serif;mso-ascii-theme-font:major-bidi;mso-hansi-theme-font:
+		major-bidi;mso-bidi-theme-font:major-bidi'>Mohammed Ahmed Publications<o:p></o:p></span></b></p>
+
+<form action="" id="quicksearch">
+<input type="text" id="qs_field" autocomplete="off" placeholder="Type to search..." /> <input type="button" onclick="clearQS()" value="clear" />
+<span id="searchstat">Matching entries: <span id="stat">0</span></span>
+<div id="showsettings" onclick="toggleSettings()">settings...</div>
+<div id="settings" class="hidden">
+<ul>
+<li><input type="checkbox" class="search_setting" id="opt_searchAbs" onchange="updateSetting(this)"><label for="opt_searchAbs"> include abstract</label></li>
+<li><input type="checkbox" class="search_setting" id="opt_searchComment" onchange="updateSetting(this)"><label for="opt_searchComment"> include comment</label></li>
+<li><input type="checkbox" class="search_setting" id="opt_useRegExp" onchange="updateSetting(this)"><label for="opt_useRegExp"> use RegExp</label></li>
+<li><input type="checkbox" class="search_setting" id="opt_noAccents" onchange="updateSetting(this)"><label for="opt_noAccents"> ignore accents</label></li>
+</ul>
+</div>
+</form>
+<table id="qs_table" border="1">
+<tbody>
+<tr id="Ahmed2014e" class="entry">
+	<td>Ahmed M (2014), <i>"Car of the Future: Innovative Technologies in Electromobility for development, design, and construction of smart cars"</i>, Talk presented at HANNOVER MESSE 2014, Forum Robotics, Automation \& Vision. April, 2014.
+	<p class="infolinks">[<a href="javascript:toggleInfo('Ahmed2014e','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Ahmed2014e','bibtex')">BibTeX</a>] [<a href="http://www.hannovermesse.de/product/forum-robotics-automation-vision/533915/Y451309" target="_blank">URL</a>]</p>
+	</td>
+</tr>
+<tr id="abs_Ahmed2014e" class="abstract noshow">
+	<td><b>Abstract</b>: Addressing the challenge of urban mobility is essential for improving the quality of life in urban areas and for mitigating the impact of climate change. It will require creative applications of new technologies in car design, changes in the way transportation services are organized and delivered, and innovations in urban planning and design.<p>This presentation examines several aspects of the challenge of urban mobility, the growth and changes in the characteristics of the world's urban population, emerging patterns of urban mobility, and changes in car technology design and connectivity. The development, design, and construction of an innovative new car concept is given as a technology demonstrator to overcome the imposed challenges.Addressing the challenge of urban mobility is essential for improving the quality of life in urban areas and for mitigating the impact of climate change. It will require creative applications of new technologies in car design, changes in the way transportation services are organized and delivered, and innovations in urban planning and design.<p>This presentation examines several aspects of the challenge of urban mobility, the growth and changes in the characteristics of the world's urban population, emerging patterns of urban mobility, and changes in car technology design and connectivity. The development, design, and construction of an innovative new car concept is given as a technology demonstrator to overcome the imposed challenges.</td>
+</tr>
+<tr id="bib_Ahmed2014e" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@misc{Ahmed2014e,
+  author = {Mohammed Ahmed},
+  title = {Car of the Future: Innovative Technologies in Electromobility for development, design, and construction of smart cars},
+  howpublished = {Talk presented at HANNOVER MESSE 2014, Forum Robotics, Automation \& Vision},
+  year = {2014},
+  url = {http://www.hannovermesse.de/product/forum-robotics-automation-vision/533915/Y451309}
+}
+</pre></td>
+</tr>
+<tr id="Ahmed2014c" class="entry">
+	<td>Ahmed M and Babu A (2014), <i>"Autonomous Steering Controller for Path Following"</i>, In Proceedings of the RIC Project Day Workgroups "Framework &amp; Standardization" and "Manipulation &amp; Control". RIC Project Day, June 19, Bremen, Germany., June, 2014.  Vol. 14-05, pp. 118-119. Selbstverlag.
+	<p class="infolinks">[<a href="javascript:toggleInfo('Ahmed2014c','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Ahmed2014c','bibtex')">BibTeX</a>]</p>
+	</td>
+</tr>
+<tr id="abs_Ahmed2014c" class="abstract noshow">
+	<td><b>Abstract</b>: We present an autonomous path following controller for mobile robots. Controller designs using the kinematic model of the robot is discussed for both differential and car-like steering. The kinematic model of the robot is transformed to chained form, from which the controller is developed. It is intergrated in ROCK frame work and are being used by many projects at DFKI. Results of the controller from the IMoby and EO2 projects are also presented.</td>
+</tr>
+<tr id="bib_Ahmed2014c" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{Ahmed2014c,
+  author = {Mohammed Ahmed and Ajish Babu},
+  title = {Autonomous Steering Controller for Path Following},
+  booktitle = {Proceedings of the RIC Project Day Workgroups "Framework &amp; Standardization" and "Manipulation &amp; Control". RIC Project Day, June 19, Bremen, Germany},
+  publisher = {Selbstverlag},
+  year = {2014},
+  volume = {14-05},
+  pages = {118--119}
+}
+</pre></td>
+</tr>
+<tr id="Ahmed2010a" class="entry">
+	<td>Ahmed M, Benitez LV and Kirchner F (2010), <i>"Accurate Identification and Simulation of Brushless DC Drive Actuating System for High Performance Applications"</i>, In The 4<sup>th</sup> Int'l Industrial Control &amp; Automation Technology Exhibition and Conference. Automation Technology Egypt 2010 (Automation -2010), May 10-12, Cairo, Egypt.  Automation 2010.
+	<p class="infolinks">[<a href="javascript:toggleInfo('Ahmed2010a','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Ahmed2010a','bibtex')">BibTeX</a>]</p>
+	</td>
+</tr>
+<tr id="abs_Ahmed2010a" class="abstract noshow">
+	<td><b>Abstract</b>: This paper presents the typical construction and operation of a practical technique that applies system identification with recursive parameter identification to a PWM commanded three phase BLDC motor actuating system to extract its accurate black box linear model. The implementation in MATLAB/Simulink of this technique is also presented. Model validation is provided, as an essential feature of the technique, by step response transient simulation of motor current feedback and shaft velocity and comparison with actual drive test data in addition to Hardware in the loop (HIL) simulations utilizing a real actuator to verify the accuracy of the derived models. Design, simulations, and experimental results are included in the paper. The derived model is successful deployed in controller design of a space robot, named SpaceClimber, joint actuators. The effect of different techniques to control the modeled joint actuators and the controllers design is also analyzed. From the results obtained, it can be concluded that using the proposed technique for the BLDC motor drive modeling and its controller design is very promising.</td>
+</tr>
+<tr id="bib_Ahmed2010a" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{Ahmed2010a,
+  author = {Ahmed, Mohammed and Benitez, Luis Vaca and Kirchner, Frank},
+  title = {Accurate Identification and Simulation of Brushless DC Drive Actuating System for High Performance Applications},
+  booktitle = {The 4<sup>th</sup> Int'l Industrial Control &amp; Automation Technology Exhibition and Conference. Automation Technology Egypt 2010 (Automation -2010), May 10-12, Cairo, Egypt},
+  publisher = {Automation 2010},
+  year = {2010}
+}
+</pre></td>
+</tr>
+<tr id="Ahmed2015a" class="entry">
+	<td>Ahmed M, Ebrahim MA, Ramadand HS and Becherif M (2015), <i>"Optimal genetic-sliding mode control of VSC-HVDC transmission systems"</i>, Energy Procedia., April, 2015.  Vol. 69
+	<p class="infolinks">[<a href="javascript:toggleInfo('Ahmed2015a','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Ahmed2015a','bibtex')">BibTeX</a>] [<a href="ISSN: 1876-6102" target="_blank">DOI</a>] [<a href="http://www.journals.elsevier.com/energy-procedia/" target="_blank">URL</a>]</p>
+	</td>
+</tr>
+<tr id="abs_Ahmed2015a" class="abstract noshow">
+	<td><b>Abstract</b>: This paper deals with the design of a hybrid optimal Genetic-Sliding Mode Control (GA-SMC) approach for VSC-HVDC transmission systems for improving the system's dynamic stability over a wide range of operating conditions considering different parameter variations and disturbances. For this purpose, a comprehensive state of the art of the VSC-HVDC stabilization dilemma is discussed. The nonlinear VSC-HVDC model is developed. The problem of designing a nonlinear feedback control scheme via two control strategies is addressed seeking a better performance. For ensuring robustness and chattering free behavior, the conventional SMC (C-SMC) scheme is realized using a boundary layer hyperbolic tangent function for the sliding surface. Then, the Genetic Algorithm (GA) is employed for determining the optimal gains for such SMC methodology forming a modified nonlinear GA-SMC control in order to conveniently stabilize the system end enhance its performance. The simulation results verify the enhanced performance of the VSC-HVDC transmission system controlled by SMC alone compared to the proposed optimal GA-SMC control. The comparative dynamic behavior analysis for both SMC and GA-SMC control schemes are presented.</td>
+</tr>
+<tr id="bib_Ahmed2015a" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@article{Ahmed2015a,
+  author = {Mohammed Ahmed and Mohamed A. Ebrahim and Haitham S. Ramadand and Mohamed Becherif},
+  title = {Optimal genetic-sliding mode control of VSC-HVDC transmission systems},
+  journal = {Energy Procedia},
+  year = {2015},
+  volume = {69},
+  note = {International Conference on Technologies and Materials for Renewable Energy, Environment and Sustainability, TMREES15},
+  url = {http://www.journals.elsevier.com/energy-procedia/},
+  doi = {ISSN: 1876-6102}
+}
+</pre></td>
+</tr>
+<tr id="Ahmed2014b" class="entry">
+	<td>Ahmed M, Eich M and Bernhard F (2014), <i>"Design and Control of MIRA: a Lightweight Climbing Robot for Ship Inspection"</i>, In World Symposium on Mechatronics Engineering &amp; Applied Physics (WSMEAP2014). International Conference on Mechatronics Engineering (ICME-2014). Sousse, Tunisia, 18--20 June, 2014.  Vol. 55, pp. 128-135. http://www.scipress.com/ILCPA.55.128.
+	<p class="infolinks">[<a href="javascript:toggleInfo('Ahmed2014b','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Ahmed2014b','bibtex')">BibTeX</a>]</p>
+	</td>
+</tr>
+<tr id="abs_Ahmed2014b" class="abstract noshow">
+	<td><b>Abstract</b>: The inspection of marine vessels is currently performed manually. Inspectors use tools (e.g. cameras and devices for non-destructive testing) to detect damaged areas, cracks, and corrosion in large cargo holds, tanks, and other parts of a ship. Due to the size and complex geometry of most ships, ship inspection is time-consuming and expensive. The EU-funded project INCASS develops concepts for a marine inspection robotic assistant system to improve and automate ship inspections. In this paper, we introduce our magnetic wall&amp;#8211;climbing robot: Marine Inspection Robotic Assistant (MIRA). This semiautonomous lightweight system is able to climb a vessels steel frame to deliver on-line visual inspection data. In addition, we describe the design of the robot and its building subsystems as<br>well as its hardware and software components.</td>
+</tr>
+<tr id="bib_Ahmed2014b" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{Ahmed2014b,
+  author = {Mohammed Ahmed and Markus Eich and Felix Bernhard},
+  title = {Design and Control of MIRA: a Lightweight Climbing Robot for Ship Inspection},
+  booktitle = {World Symposium on Mechatronics Engineering &amp; Applied Physics (WSMEAP2014). International Conference on Mechatronics Engineering (ICME-2014)},
+  publisher = {http://www.scipress.com/ILCPA.55.128},
+  year = {2014},
+  volume = {55},
+  pages = {128--135}
+}
+</pre></td>
+</tr>
+<tr id="Ahmed2014" class="entry">
+	<td>Ahmed M and Kirchner F (2014), <i>"Design and Implementation of a Long Range Visual Terrain Classifier for Legged Robots"</i>, In World Symposium on Computer Applications &amp; Research WSCAR' 2014, International Conference on Signal Processing and Remote Sensing (ICSPRS2014). Sousse, Tunisia, 18-20 January, 2014. , pp. 117-122. IEEE.
+	<p class="infolinks">[<a href="javascript:toggleInfo('Ahmed2014','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Ahmed2014','bibtex')">BibTeX</a>] [<a href="ISBN: 978-1-4799-2805-7" target="_blank">DOI</a>]</p>
+	</td>
+</tr>
+<tr id="abs_Ahmed2014" class="abstract noshow">
+	<td><b>Abstract</b>: A key challenge in autonomous legged robots is the extraction of meaningful information from sensor data, which would allow a good interpretation of the nearby terrain, and a reasonable assessment of more distant areas. In order to navigate efficiently, legged robots need to assess the nearby terrain, avoiding obstacles and other hazards such as excessive tilt and roughness. Although the field of automated terrain classification is relatively new, its advances and goals are scattered across different robotic platforms and applications. In this paper, we present an automated terrain classification approach that works with a single camera and maintains high classification rates that are robust to varying lighting conditions. Terrain is classified using keypoint descriptors created from speeded up robust features (SURF) with a support vector machine (SVM) classifier. This technique works by extracting salient features, and matching these to a database of pre-extracted features to perform the classification. We demonstrate the good performance of our approach with the results of the experiments done to classify patches of different terrain types.</td>
+</tr>
+<tr id="bib_Ahmed2014" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{Ahmed2014,
+  author = {Mohammed Ahmed and Frank Kirchner},
+  editor = {Rachid Sammouda},
+  title = {Design and Implementation of a Long Range Visual Terrain Classifier for Legged Robots},
+  booktitle = {World Symposium on Computer Applications &amp; Research WSCAR' 2014, International Conference on Signal Processing and Remote Sensing (ICSPRS2014)},
+  publisher = {IEEE},
+  year = {2014},
+  pages = {117--122},
+  doi = {ISBN: 978-1-4799-2805-7}
+}
+</pre></td>
+</tr>
+<tr id="Ahmed2009" class="entry">
+	<td>Ahmed M and Kirchner F (2009), <i>"A Simulation Environment to Be Utilised in the Design and Test Process of the HEVs and EVs BLDC Drive and Its Control"</i>, In 11<sup>th</sup> European Regional Conference of the International Society of Terrain-Vehicle Systems (ISTVS-09). Bremen, Germany, October, 2009.  ISTVS'09.
+	<p class="infolinks">[<a href="javascript:toggleInfo('Ahmed2009','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Ahmed2009','bibtex')">BibTeX</a>]</p>
+	</td>
+</tr>
+<tr id="abs_Ahmed2009" class="abstract noshow">
+	<td><b>Abstract</b>: A simulation environment that can be efficiently utilised in the design and test process of brushless DC (BLDC) drive system used for hybrid electric vehicles (HEVs) or electric vehicles (EVs) and tuning of its controller is proposed in this paper. The typical construction and operation of BLDC motor and a derivation of its mathematical model and also the derived model implementation in MATLAB/Simulink is presented. The effect of different techniques to control the modelled BLDC motor and the controllers design is also analysed. Design, simulations, and experimental results are also included.</td>
+</tr>
+<tr id="bib_Ahmed2009" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{Ahmed2009,
+  author = {Mohammed Ahmed and Frank Kirchner},
+  title = {A Simulation Environment to Be Utilised in the Design and Test Process of the HEVs and EVs BLDC Drive and Its Control},
+  booktitle = {11<sup>th</sup> European Regional Conference of the International Society of Terrain-Vehicle Systems (ISTVS-09)},
+  publisher = {ISTVS'09},
+  year = {2009}
+}
+</pre></td>
+</tr>
+<tr id="Ahmed2014a" class="entry">
+	<td>Ahmed M, Oekermann C and Kirchner F (2014), <i>"Cosimulation Environment for Mechanical Design Optimization with Evolutionary Algorithms"</i>, In World Symposium on Computer Applications &amp; Research WSCAR' 2014, International Conference on Artificial Intelligence (ICAI' 2014). Sousse, Tunisia, 18-20 January, 2014. , pp. 21-26. IEEE, http://ieeexplore.ieee.org/xpl/articleDetails.jsp?reload=true&amp;arnumber=6916781.
+	<p class="infolinks">[<a href="javascript:toggleInfo('Ahmed2014a','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Ahmed2014a','bibtex')">BibTeX</a>] [<a href="ISBN: 978-1-4799-2805-7" target="_blank">DOI</a>]</p>
+	</td>
+</tr>
+<tr id="abs_Ahmed2014a" class="abstract noshow">
+	<td><b>Abstract</b>: In this paper, we present the application of evolutionary optimization methods to a demanding, industrially relevant engineering domain, the three-dimensional optimization of gas turbine stator blades. This optimization problem is highdimensional search and computationally very expensive. We show that, despite of its difficulty, the problem is feasible. Our approach not only successfully optimizes the aerodynamic design but also yields interesting results from an engineering point of view. In this paper we describe an optimization method which evolves a manipulator arm morphology that requires minimal torques to accomplish these to some extent conflictive applications. Covariance Matrix Adaptation Evolution Strategy in parallel processing is used to optimize the link lengths of the manipulator arm. A real-time simulation is used to model the rover, all constraints, and to evaluate each morphology by analyzing the required torques for accomplishing pre-defined tasks. The paper presents the simulation results and the final manipulator arm morphology.</td>
+</tr>
+<tr id="bib_Ahmed2014a" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{Ahmed2014a,
+  author = {Mohammed Ahmed and Christian Oekermann and Frank Kirchner},
+  editor = {Rachid Sammouda},
+  title = {Cosimulation Environment for Mechanical Design Optimization with Evolutionary Algorithms},
+  booktitle = {World Symposium on Computer Applications &amp; Research WSCAR' 2014, International Conference on Artificial Intelligence (ICAI' 2014)},
+  publisher = {IEEE, http://ieeexplore.ieee.org/xpl/articleDetails.jsp?reload=true&amp;arnumber=6916781},
+  year = {2014},
+  pages = {21--26},
+  doi = {ISBN: 978-1-4799-2805-7}
+}
+</pre></td>
+</tr>
+<tr id="Ahmed2011" class="entry">
+	<td>Ahmed M, Quack L, Langosz M and Yoo Y-H (2011), <i>"Development of a Real and Simulation Testbed for Legged Robot Soil Interaction"</i>, In International Conference of the International Society for Terrain-Vehicle Systems, (ISTVS-11). Blacksburg, Virginia, USA, 18-22.9, 2011. , pp. 110-116. ISTVS2011.
+	<p class="infolinks">[<a href="javascript:toggleInfo('Ahmed2011','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Ahmed2011','bibtex')">BibTeX</a>] [<a href="http://istvs.org/17\textsuperscript{th}-international-conference" target="_blank">URL</a>]</p>
+	</td>
+</tr>
+<tr id="abs_Ahmed2011" class="abstract noshow">
+	<td><b>Abstract</b>: For legged robots, evaluation of the overall mobility performance on different soil types is a requirement to guarantee a good walking behavior. Therefore, it is important to develop models and simulations of the overall To help build these interaction models and for the verification and validation of the simulation, intensive robot testing in a lab environment is necessary and should occur hand in hand with their development. This paper describes the design and development of a new testbed for legged robot systems. This testbed consists of a soil testbed, a 7DoF robotic arm, and software architecture to perform both real and simulated experiments with different robot legs and other test objects. The testbed is used to study and analyse the test objects interaction with the soil and their terramechanical properties to help build models that are used in the design of real robots and in the overall simulations of these systems. Results with analysis for experiments and simulations are presented together with the testbed setup design.</td>
+</tr>
+<tr id="bib_Ahmed2011" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{Ahmed2011,
+  author = {Mohammed Ahmed and Lorenz Quack and Malte Langosz and Yong-Ho Yoo},
+  title = {Development of a Real and Simulation Testbed for Legged Robot Soil Interaction},
+  booktitle = {International Conference of the International Society for Terrain-Vehicle Systems, (ISTVS-11)},
+  publisher = {ISTVS2011},
+  year = {2011},
+  pages = {110--116},
+  url = {http://istvs.org/17<sup>th</sup>-international-conference}
+}
+</pre></td>
+</tr>
+<tr id="Ahmed2014d" class="entry">
+	<td>Ahmed M, Sonsalla R and Kirchner F (2014), <i>"Autonomous Path Tracking Steering Controller for Extraterrestrial Terrain Exploration Rover"</i>, In 40<sup>th</sup> COSPAR Scientific Assembly. Moscow, Russian Federation, August, 2014.  cosmos.
+	<p class="infolinks">[<a href="javascript:toggleInfo('Ahmed2014d','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Ahmed2014d','bibtex')">BibTeX</a>] [<a href="http://cospar2014moscow.com" target="_blank">URL</a>]</p>
+	</td>
+</tr>
+<tr id="abs_Ahmed2014d" class="abstract noshow">
+	<td><b>Abstract</b>: Extraterrestrial surface missions typically use a robotic rover platform to carry the science instrumentation (e.g.,the twin MER rovers). Due to the risks in the rover path (i.e. low trafficability of unrecognized soil patches), it is proposed in the EU FASTER project that two rovers should be used. A micro scout rover is used for determining the traversability of the terrain and collaborate with a primary rover to lower the risk of entering hazardous areas. That will improve the mission safety and the effective traverse speed for planetary rover exploration.<br>This paper presents the design and implementation of the path following controller for a micro scout rover. The objective is to synthesize a control law which allows the rover to autonomously follow a desired path in a stable manner. Furthermore, the software architecture controlling the rover and all of its subsystems is depicted. The performance of the designed controller is discussed and demonstrated with realistic simulations and experiments, conclusions and an outlook of future work are also given.</td>
+</tr>
+<tr id="bib_Ahmed2014d" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{Ahmed2014d,
+  author = {Mohammed Ahmed and Roland Sonsalla and Frank Kirchner},
+  title = {Autonomous Path Tracking Steering Controller for Extraterrestrial Terrain Exploration Rover},
+  booktitle = {40<sup>th</sup> COSPAR Scientific Assembly},
+  publisher = {cosmos},
+  year = {2014},
+  url = {http://cospar2014moscow.com}
+}
+</pre></td>
+</tr>
+<tr id="Ahmed2010b" class="entry">
+	<td>Ahmed M and Yoo Y-H (2010), <i>"Measurement and Control of the Contact Forces between Walking Robot legs and its Environment"</i>, In Proceedings of the Joint 9<sup>th</sup> Asia-Pacific ISTVS Conference and Annual Meeting of Japanese Society for Terramechanics. Sapporo, Japan, 27--30.09., 2010.  ISTVS2010.
+	<p class="infolinks">[<a href="javascript:toggleInfo('Ahmed2010b','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Ahmed2010b','bibtex')">BibTeX</a>]</p>
+	</td>
+</tr>
+<tr id="abs_Ahmed2010b" class="abstract noshow">
+	<td><b>Abstract</b>: Interaction between a walking robot and its environment is one of the most important issues in robotic research. To achieve good dynamical locomotion behaviors such as compliance with unknown load on the walking pattern as well as for energy-efficient locomotion behaviors such as low friction, high-force fidelity, and large-force bandwidth are deeply related to the interaction between the robot and its environment. For a good walking behavior, the robot should be capable of efficiently handling the forces resulting from the physical contact between its legs and the environment. Pure motion control turns out to be inadequate because the unavoidable modeling errors and uncertainties may cause a rise of the contact force, ultimately leading to an unstable behavior during the interaction, especially in the presence of rigid environments. Force feedback and force control becomes mandatory to achieve a robust and versatile behavior of a robotic system in poorly structured environments as well as safe and dependable operation in the presence of humans. In this paper, different approaches to measure the interaction forces between a legged robot and the environment that can be used for impedance control of its joint actuators are proposed with In addition, the analysis of indirect force control strategies, conceived to keep the contact forces limited by ensuring a suitable compliant behavior to the robot foot, with no need for an accurate model of the environment and formulation of the indirect force control via motion control scheme. This formulation is the essential premise to the synthesis of a hybrid impedance (admittance to be more specific) force/motion controller scheme. The results of experiments performed in a realistic simulation framework along with some analysis of the terrain force interaction between robot leg and the ground are presented.</td>
+</tr>
+<tr id="bib_Ahmed2010b" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{Ahmed2010b,
+  author = {Mohammed Ahmed and Yong-Ho Yoo},
+  title = {Measurement and Control of the Contact Forces between Walking Robot legs and its Environment},
+  booktitle = {Proceedings of the Joint 9<sup>th</sup> Asia-Pacific ISTVS Conference and Annual Meeting of Japanese Society for Terramechanics},
+  publisher = {ISTVS2010},
+  year = {2010}
+}
+</pre></td>
+</tr>
+<tr id="Ahmed2010" class="entry">
+	<td>Ahmed M, Yoo Y-H and Kirchner F (2010), <i>"A Co-simulation Framework for Design, Test and Parameter Optimization of Robotic Systems"</i>, In ISR / ROBOTIK 2010. The joint conference of the 41<sup>st</sup> International Symposium on Robotics and the 6<sup>th</sup> German Conference on Robotics (ISR/ROBOTIK-2010), June 7-9, Munich, Germany.  ISR/ROBOTIK2010.
+	<p class="infolinks">[<a href="javascript:toggleInfo('Ahmed2010','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Ahmed2010','bibtex')">BibTeX</a>]</p>
+	</td>
+</tr>
+<tr id="abs_Ahmed2010" class="abstract noshow">
+	<td><b>Abstract</b>: This paper presents a precise co-simulation framework that is successfully used to connect a central pattern generator (named M.O.N.S.T.E.R) for the design of system behaviors, MATLAB/Simulink for the design of actuator controllers, and ADAMS/VIEW for the design of the robot kinematics and dynamics. This proposed framework is utilized in the design, test and parameter optimization of different components of the robotic system.</td>
+</tr>
+<tr id="bib_Ahmed2010" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{Ahmed2010,
+  author = {Ahmed, Mohammed and Yoo, Yong-Ho and Kirchner, Frank},
+  title = {A Co-simulation Framework for Design, Test and Parameter Optimization of Robotic Systems},
+  booktitle = {ISR / ROBOTIK 2010. The joint conference of the 41<sup>st</sup> International Symposium on Robotics and the 6<sup>th</sup> German Conference on Robotics (ISR/ROBOTIK-2010), June 7-9, Munich, Germany},
+  publisher = {ISR/ROBOTIK2010},
+  year = {2010}
+}
+</pre></td>
+</tr>
+<tr id="Ahmed2013" class="entry">
+	<td>Ahmed M and Y&uuml;ksel M (2013), <i>"Autonomous Path Tracking Steering Controller for EO Smart Connecting Car"</i>, In Proceeding of the World Congress on Multimedia and Computer Science 2013. International Conference on Intelligent Automation and Robotics (ICIAR-13). Hammamet, Tunisia, October, 2013. , pp. 45-50. IEEE.
+	<p class="infolinks">[<a href="javascript:toggleInfo('Ahmed2013','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Ahmed2013','bibtex')">BibTeX</a>]</p>
+	</td>
+</tr>
+<tr id="abs_Ahmed2013" class="abstract noshow">
+	<td><b>Abstract</b>: Within this paper, we reconsider the path-following problem with the objective to synthesize a control law which allows the prototype electric vehicle EO smart connecting car 2 to autonomously follow a desired path in a stable manner. Furthermore, the software architecture controlling the car and all its subsystems is depicted. A hardware-in-the-loop (HIL) framework that can provide an effective platform for developing and testing different subsystems of the vehicle in real-time is described and the general workflow is outlined. The performance of the designed controller is discussed and demonstrated with realistic simulations. An experiment with the HIL framework interfaced to the car is presented, conclusions and an outlook of future work are also given.</td>
+</tr>
+<tr id="bib_Ahmed2013" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{Ahmed2013,
+  author = {Mohammed Ahmed and Mehmed Y&uuml;ksel},
+  editor = {Nejmeddine Tagoug},
+  title = {Autonomous Path Tracking Steering Controller for EO Smart Connecting Car},
+  booktitle = {Proceeding of the World Congress on Multimedia and Computer Science 2013. International Conference on Intelligent Automation and Robotics (ICIAR-13)},
+  publisher = {IEEE},
+  year = {2013},
+  pages = {45--50}
+}
+</pre></td>
+</tr>
+<tr id="Birnschein2014" class="entry">
+	<td>Birnschein T, Kirchner F, Ahmed M, Yueksel M, Yoo Y-H, Oekermann C, Girault B, Kroffke S and Gruenwald D (2014), <i>"Enhancing Mobility using Innovative Technologies and Highly Flexible Autonomous Vehicles"</i>, In 18<sup>th</sup> International Forum on Advanced Microsystems for Automotive Applications (AMAA 2014): Smart Systems for Safe, Clean, and Automated Vehicles. Berlin, Germany, 23-24 June, 2014. 
+	<p class="infolinks">[<a href="javascript:toggleInfo('Birnschein2014','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Birnschein2014','bibtex')">BibTeX</a>]</p>
+	</td>
+</tr>
+<tr id="abs_Birnschein2014" class="abstract noshow">
+	<td><b>Abstract</b>: In the development of our new electric car concept: EO smart connecting car 2 (EOscc2), a number of features and techniques are borrowed from the robotics domain (e.g., extended maneuverability of body parts, path planning and autonomous navigation). Although the added features help to simplify the tasks of the driver (e.g. parking in urban areas and driver inefficient control of the car), they also increase the complexity of the vehicle itself. In this paper, we present a practical framework and workflow for development and implementation of vehicle software components. This covers all activities from unit testing of single components to field experiments with the real car. The described framework is based on the rapid control prototyping (RCP) approach that is used for system development and enables modularity in the design of subsystems. The framework was successfully used for the development and implementation of actuators and motors low level control, kinematic calculation and path following algorithms. The performance of the designed modules is demonstrated through realistic simulations and real experiments. In the conducted simulations, the real car software modules are used in a software-in-the-loop fashion and in the real experiments, the software modules are interfaced with the real hardware, tested and verified. From the presented use-cases of the framework to validate hardware and software components and systems of the car, it is verified that this framework is indispensable, effective and adaptive solution as a development and test environment with the hardware platform. It reduces time and costs significantly for implementing component prototypes of the target system. Because of the benefits of the proposed framework and its capabilities as a realtime hardware interface, it is selected for the integration phase of the EO2 car as well as the development and optimization of most software components for the car control. Further conclusions, experience, outlook of future work are also given. %necessary to talk shortly about your conclusions here in the abstract.</td>
+</tr>
+<tr id="bib_Birnschein2014" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{Birnschein2014,
+  author = {Timo Birnschein and Frank Kirchner and Mohammed Ahmed and Mehmed Yueksel and Yong-Ho Yoo and Christian Oekermann and Benjamin Girault and Sven Kroffke and David Gruenwald},
+  title = {Enhancing Mobility using Innovative Technologies and Highly Flexible Autonomous Vehicles},
+  booktitle = {18<sup>th</sup> International Forum on Advanced Microsystems for Automotive Applications (AMAA 2014): Smart Systems for Safe, Clean, and Automated Vehicles},
+  year = {2014},
+  note = {accepted}
+}
+</pre></td>
+</tr>
+<tr id="MalteLangosz2011" class="entry">
+	<td>Langosz M, Ahmed M, Quack L and Yoo Y-H (2011), <i>"Modeling of Leg Soil Interaction using Genetic Algorithms"</i>, In International Conference of the International Society for Terrain-Vehicle Systems, (ISTVS-11)., 18-22.9, 2011. , pp. 110-116. ISTVS2011.
+	<p class="infolinks">[<a href="javascript:toggleInfo('MalteLangosz2011','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('MalteLangosz2011','bibtex')">BibTeX</a>]</p>
+	</td>
+</tr>
+<tr id="abs_MalteLangosz2011" class="abstract noshow">
+	<td><b>Abstract</b>: In the field of legged robotics, the use of walking and climbing robots becomes very useful for extraterrestrial applications, e.g., collection of samples from lunar crater beds. To efficiently simulate such a space mission and to enable a rational design process, a realistic robot leg&amp;#150;soil interaction model is required. In this paper an approach is presented that constructs such a model using a genetic algorithm that evolves an artificial neural network using experimental data. The data is collected through a series of experiments performed with an industrial robotic arm equipped with a six axes force/torque sensor and a state of the art walking and climbing robot foot. The genetic algorithm evolves the structure and the parameters of the neural network which is represented with an indirect graph. In this paper only the modeling of the contact normal forces is presented, but the approach can be easily extended to include also the lateral force. The paper describes the neural network, the genetic algorithm, and the indirect graph representation. Moreover, the integration of the model into a full rigid body robot simulator is presented.</td>
+</tr>
+<tr id="bib_MalteLangosz2011" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{MalteLangosz2011,
+  author = {Malte Langosz and Mohammed Ahmed and Lorenz Quack and Yong-Ho Yoo},
+  title = {Modeling of Leg Soil Interaction using Genetic Algorithms},
+  booktitle = {International Conference of the International Society for Terrain-Vehicle Systems, (ISTVS-11)},
+  publisher = {ISTVS2011},
+  year = {2011},
+  pages = {110--116}
+}
+</pre></td>
+</tr>
+<tr id="Rol2014" class="entry">
+	<td>Sonsalla R, Ahmed M, Fritsche M, Akpo JB and V&ouml;gele T (2014), <i>"Scout Rover Applications for Forward Acqusition of Soil and Terrain Data"</i>, In Proceedings of European Planetary Science Congress (EPSC-2014). Cascais, Portugal, Portugal, September, 2014.  Vol. 9 EPSC.
+	<p class="infolinks">[<a href="javascript:toggleInfo('Rol2014','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Rol2014','bibtex')">BibTeX</a>] [<a href="http://www.epsc2014.eu" target="_blank">URL</a>]</p>
+	</td>
+</tr>
+<tr id="abs_Rol2014" class="abstract noshow">
+	<td><b>Abstract</b>: future mission concepts ask for a fast and safe traverse through vast and varied expanses of terrain. As seen during the Mars Exploration Rover (MER) mission the rovers suffered a lack of detailed soil and terrain information which caused Spirit to get permanently stuck in soft soil. The goal of the FASTER1 EUFP7 project is to improve the mission safety and the effective traverse speed for planetary rover exploration by determining the traversability of the terrain and lowering the risk to enter hazardous areas. To achieve these goals, a scout rover will be used for soil and terrain sensing ahead of the main rover. This paper describes a highly mobile, and versatile micro scout rover that is used for soil and terrain sensing and is able to co-operate with a primary rover as part of the FASTER approach. The general reference mission idea and concept is addressed within this paper along with top-level requirements derived from the proposed ESA/NASA Mars Sample Return mission (MSR) [4]. Following the mission concept and requirements [3], a concept study for scout rover design and operations has been performed [5]. Based on this study the baseline for the Coyote II rover was designed and built as shown in Figure 1. Coyote II is equipped with a novel locomotion concept, providing high all terrain mobility and allowing to perform side-to-side steering maneuvers which reduce the soil disturbance as compared to common skid steering [6]. The rover serves as test platform for various scout rover application tests ranging from locomotion testing to dual rover operations.</td>
+</tr>
+<tr id="bib_Rol2014" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{Rol2014,
+  author = {Roland Sonsalla and Mohammed Ahmed and Martin Fritsche and Joel Bessekon Akpo and Thomas V&ouml;gele},
+  title = {Scout Rover Applications for Forward Acqusition of Soil and Terrain Data},
+  booktitle = {Proceedings of European Planetary Science Congress (EPSC-2014)},
+  publisher = {EPSC},
+  year = {2014},
+  volume = {9},
+  url = {http://www.epsc2014.eu}
+}
+</pre></td>
+</tr>
+<tr id="Yoo2010" class="entry">
+	<td>Yoo Y-H, Ahmed M, Bartsch S and Kirchner F (2010), <i>"Realistic Simulation of Extraterrestrial Legged Robot in Trade-off between Accuracy and Simulation Time"</i>, In Proceeding of the 35<sup>th</sup> Annual Conference of the IEEE Industrial Electronics Society (IECON-2010). Glendale, AZ, USA, November, 2010. 
+	<p class="infolinks">[<a href="javascript:toggleInfo('Yoo2010','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Yoo2010','bibtex')">BibTeX</a>]</p>
+	</td>
+</tr>
+<tr id="abs_Yoo2010" class="abstract noshow">
+	<td><b>Abstract</b>: In this paper, a realistic simulation of extraterrestrial legged robot in trade-off between accuracy and simulation time is presented which provides an enough accuracy to simulate the dynamical properties and locomotions of the legged robot as well as simplified models in a possible timing rate for the realtime simulation. To simplify the complex joint actuator model, an abstract joint actuator model is defined and its parameters are identified. To connect the abstract model to the whole robot kinematic model in a possible timing rate for the real-time simulation, a bi-directional power coupling is proposed. To verify the accuracy of the robot simulation with the abstract model and the power coupling, real experiments are performed and compared with the simulation results. In the proposed realistic simulation, an approach for force measurement for impedance control to improve the locomotion behavior of the legged robot with contact dynamics is developed.</td>
+</tr>
+<tr id="bib_Yoo2010" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{Yoo2010,
+  author = {Yong-Ho Yoo and Mohammed Ahmed and Sebastian Bartsch and Frank Kirchner},
+  title = {Realistic Simulation of Extraterrestrial Legged Robot in Trade-off between Accuracy and Simulation Time},
+  booktitle = {Proceeding of the 35<sup>th</sup> Annual Conference of the IEEE Industrial Electronics Society (IECON-2010)},
+  year = {2010}
+}
+</pre></td>
+</tr>
+<tr id="Yoo2009" class="entry">
+	<td>Yoo Y-H, Ahmed M, Roemmermann M and Kirchner F (2009), <i>"A simulation-based design of extraterrestrial six-legged robot system"</i>, In 2009 35<sup>th</sup> Annual Conference of IEEE Industrial Electronics. Porto, Portugal , pp. 2181-2186. IEEE.
+	<p class="infolinks">[<a href="javascript:toggleInfo('Yoo2009','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Yoo2009','bibtex')">BibTeX</a>] [<a href="https://doi.org/10.1109/IECON.2009.5415120" target="_blank">DOI</a>] [<a href="http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=5415120" target="_blank">URL</a>]</p>
+	</td>
+</tr>
+<tr id="abs_Yoo2009" class="abstract noshow">
+	<td><b>Abstract</b>: The advanced simulation technology with the rapid growth of computing power leads many new approaches towards design of robot systems. In the typical top-down design of a robot system, the design of the lower phase would be limited by the design from the higher phase. Moreover, it is difficult to well-design the higher phase in predicting problems of the lower phase. Such problems can be effectively improved in the simulation-based system design. All design phases can be done simultaneously with the suitable simulation environment where the hardware and software properties can be flexibly selected and changed. In this paper, a simulation-based design approach of an extraterrestrial six-legged robot (named SpaceClimber) is presented. The highlevel system properties such as fitness functions, energy-efficient morphology and intelligent locomotions are designed in the realtime simulation. The low-level system properties such as joint motor, robot kinematics and dynamical control properties are designed in the precise simulation based on ADAMS/VIEW and MATLAB/SIMULINK.</td>
+</tr>
+<tr id="bib_Yoo2009" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{Yoo2009,
+  author = {Yoo, Yong-Ho and Ahmed, Mohammed and Roemmermann, Malte and Kirchner, Frank},
+  title = {A simulation-based design of extraterrestrial six-legged robot system},
+  booktitle = {2009 35<sup>th</sup> Annual Conference of IEEE Industrial Electronics},
+  publisher = {IEEE},
+  year = {2009},
+  pages = {2181--2186},
+  url = {http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=5415120},
+  doi = {10.1109/IECON.2009.5415120}
+}
+</pre></td>
+</tr>
+<tr id="Yueksel2014a" class="entry">
+	<td>Y&uuml;ksel M, Ahmed M, Girault B, Birnschein T and Kirchner F (2014), <i>"A Framework for Design, Test, and Validation of Electric Car Modules"</i>, In Advanced Microsystems for Automotive Applications 2014. , pp. 245-254. Springer International Publishing.
+	<p class="infolinks">[<a href="javascript:toggleInfo('Yueksel2014a','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Yueksel2014a','comment')">Comment</a>]  [<a href="javascript:toggleInfo('Yueksel2014a','bibtex')">BibTeX</a>] [<a href="https://doi.org/10.1007/978-3-319-08087-1_22" target="_blank">DOI</a>]</p>
+	</td>
+</tr>
+<tr id="abs_Yueksel2014a" class="abstract noshow">
+	<td><b>Abstract</b>: In the development of our new electric car concept: EO smart connecting car 2 (EOscc2), a number of features and techniques are borrowed from the robotics domain (e.g., extended maneuverability of body parts, path planning and autonomous navigation). Although the added features help to simplify the tasks of the driver (e.g. parking in urban areas and driver inefficient control of the car), they also increase the complexity of the vehicle itself. In this paper, we present a practical framework and workflow for development and implementation of vehicle software components. This covers all activities from unit testing of single components to field experiments with the real car. The described framework is based on the rapid control prototyping (RCP) approach that is used for system development and enables modularity in the design of subsystems. The framework was successfully used for the development and implementation of actuators and motors low level control, kinematic calculation and path following algorithms. The performance of the designed modules is demonstrated through realistic simulations and real experiments. In the conducted simulations, the real car software modules are used in a software-in-the-loop fashion and in the real experiments, the software modules are interfaced with the real hardware, tested and verified. From the presented use-cases of the framework to validate hardware and software components and systems of the car, it is verified that this framework is indispensable, effective and adaptive solution as a development and test environment with the hardware platform. It reduces time and costs significantly for implementing component prototypes of the target system. Because of the benefits of the proposed framework and its capabilities as a realtime hardware interface, it is selected for the integration phase of the EO2 car as well as the development and optimization of most software components for the car control. Further conclusions, experience, outlook of future work are also given. %necessary to talk shortly about your conclusions here in the abstract.</td>
+</tr>
+<tr id="rev_Yueksel2014a" class="comment noshow">
+	<td><b>Comment</b>: 18<sup>th</sup> International Forum on Advanced Microsystems for Automotive Applications (AMAA 2014): Smart Systems for Safe, Clean, and Automated Vehicles, Berlin, Germany, 23--24 June, 2014</td>
+</tr>
+<tr id="bib_Yueksel2014a" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@incollection{Yueksel2014a,
+  author = {Y&uuml;ksel, Mehmed and Ahmed, Mohammed and Girault, Benjamin and Birnschein, Timo and Kirchner, Frank},
+  editor = {Fischer-Wolfarth, Jan and Meyer, Gereon},
+  title = {A Framework for Design, Test, and Validation of Electric Car Modules},
+  booktitle = {Advanced Microsystems for Automotive Applications 2014},
+  publisher = {Springer International Publishing},
+  year = {2014},
+  pages = {245--254},
+  doi = {10.1007/978-3-319-08087-1_22}
+}
+</pre></td>
+</tr>
+<tr id="Yueksel2014" class="entry">
+	<td>Y&uuml;ksel M, Oekermann C, Girault B and Ahmed M (2014), <i>"Using Industrial Actuators for Rapid Development of Electric Car Applications"</i>, In Proceedings of the 14<sup>th</sup> International Conference on New Actuators (ACTUATOR-14); 8<sup>th</sup> International Exhibition on Smart Actuators and Drive Systems. Bremen, Germany, July, 2014.  MESSE BREMEN, WFB Wirtschaftsf&ouml;rderung Bremen , Bremen.
+	<p class="infolinks">[<a href="javascript:toggleInfo('Yueksel2014','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Yueksel2014','bibtex')">BibTeX</a>] [<a href="http://www.actuator.de" target="_blank">URL</a>]</p>
+	</td>
+</tr>
+<tr id="abs_Yueksel2014" class="abstract noshow">
+	<td><b>Abstract</b>: In the development of our new electric car concept: EO smart connecting car 2 (EOscc2), a number of new features and techniques are to be implemented (e.g., extended manoeuvrability, path planning and autonomous navigation) to meet the requirements for future mobility demands.<br>This paper presents the developed control method based on rapid control prototyping for suspension and steering mechanisms of EOscc2. This method enables implementation and tests in hardware/software-in- the-loop fashions. We give a comparison between the used actuator types in terms of cost, weight, power, and mechanical features. The test results of the developed systems (speed, power) are also illustrated. In addition, a comparison of the developed software solutions (such as communication protocols, modular expandability, and platform dependency) is demonstrated. Some recommendations on the use of such actuators and an account of some of their merits and flaws especially considering weight and installation space are detailed.</td>
+</tr>
+<tr id="bib_Yueksel2014" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{Yueksel2014,
+  author = {Mehmed Y&uuml;ksel and Christian Oekermann and Benjamin Girault and Mohammed Ahmed},
+  title = {Using Industrial Actuators for Rapid Development of Electric Car Applications},
+  booktitle = {Proceedings of the 14<sup>th</sup> International Conference on New Actuators (ACTUATOR-14); 8<sup>th</sup> International Exhibition on Smart Actuators and Drive Systems},
+  publisher = {MESSE BREMEN, WFB Wirtschaftsf&ouml;rderung Bremen , Bremen},
+  year = {2014},
+  url = {http://www.actuator.de}
+}
+</pre></td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>

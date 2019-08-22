@@ -1,0 +1,2439 @@
+/* Font Definitions */
+@font-face {
+    font-family: Wingdings;
+    panose-1: 5 0 0 0 0 0 0 0 0 0;
+    mso-font-charset: 2;
+    mso-generic-font-family: decorative;
+    mso-font-pitch: variable;
+    mso-font-signature: 0 268435456 0 0 -2147483648 0;
+}
+
+@font-face {
+    font-family: "Cambria Math";
+    panose-1: 2 4 5 3 5 4 6 3 2 4;
+    mso-font-charset: 0;
+    mso-generic-font-family: roman;
+    mso-font-pitch: variable;
+    mso-font-signature: -536870145 1107305727 0 0 415 0;
+}
+
+@font-face {
+    font-family: Calibri;
+    panose-1: 2 15 5 2 2 2 4 3 2 4;
+    mso-font-charset: 0;
+    mso-generic-font-family: swiss;
+    mso-font-pitch: variable;
+    mso-font-signature: -536859905 -1073697537 9 0 511 0;
+}
+
+@font-face {
+    font-family: Garamond;
+    panose-1: 2 2 4 4 3 3 1 1 8 3;
+    mso-font-charset: 0;
+    mso-generic-font-family: roman;
+    mso-font-pitch: variable;
+    mso-font-signature: 647 0 0 0 159 0;
+}
+
+@font-face {
+    font-family: "Arial Black";
+    panose-1: 2 11 10 4 2 1 2 2 2 4;
+    mso-font-charset: 0;
+    mso-generic-font-family: swiss;
+    mso-font-pitch: variable;
+    mso-font-signature: -1610612049 1073772795 0 0 159 0;
+}
+
+@font-face {
+    font-family: "Traditional Arabic";
+    panose-1: 2 11 6 4 2 2 2 2 2 4;
+    mso-font-alt: Arial;
+    mso-font-charset: 178;
+    mso-generic-font-family: roman;
+    mso-font-pitch: variable;
+    mso-font-signature: 8195 -2147483648 8 0 65 0;
+}
+
+@font-face {
+    font-family: Tahoma;
+    panose-1: 2 11 6 4 3 5 4 4 2 4;
+    mso-font-charset: 0;
+    mso-generic-font-family: swiss;
+    mso-font-pitch: variable;
+    mso-font-signature: -520081665 -1073717157 41 0 66047 0;
+}
+
+/* Style Definitions */
+p.MsoNormal,
+li.MsoNormal,
+div.MsoNormal {
+    mso-style-unhide: no;
+    mso-style-qformat: yes;
+    mso-style-parent: "";
+    margin: 0cm;
+    margin-bottom: .0001pt;
+    text-align: justify;
+    mso-pagination: widow-orphan;
+    font-size: 11.0pt;
+    mso-bidi-font-size: 10.0pt;
+    font-family: "Garamond", serif;
+    mso-fareast-font-family: "Times New Roman";
+    mso-bidi-font-family: "Times New Roman";
+    mso-ansi-language: EN-US;
+}
+
+h1 {
+    mso-style-unhide: no;
+    mso-style-qformat: yes;
+    mso-style-parent: "Heading Base";
+    mso-style-next: "Body Text";
+    margin-top: 12.0pt;
+    margin-right: 0cm;
+    margin-bottom: 12.0pt;
+    margin-left: -108.0pt;
+    line-height: 12.0pt;
+    mso-pagination: widow-orphan lines-together;
+    page-break-after: avoid;
+    mso-outline-level: 1;
+    font-size: 11.5pt;
+    mso-bidi-font-size: 10.0pt;
+    font-family: "Garamond", serif;
+    text-transform: uppercase;
+    letter-spacing: 1.0pt;
+    mso-font-kerning: 14.0pt;
+    mso-ansi-language: EN-US;
+    font-weight: normal;
+}
+
+h2 {
+    mso-style-unhide: no;
+    mso-style-qformat: yes;
+    mso-style-parent: "Heading Base";
+    mso-style-next: "Body Text";
+    margin-top: 12.0pt;
+    margin-right: 0cm;
+    margin-bottom: 12.0pt;
+    margin-left: 0cm;
+    line-height: 12.0pt;
+    mso-pagination: widow-orphan lines-together;
+    page-break-after: avoid;
+    mso-outline-level: 2;
+    font-size: 10.0pt;
+    font-family: "Garamond", serif;
+    text-transform: uppercase;
+    letter-spacing: .25pt;
+    mso-ansi-language: EN-US;
+    font-weight: normal;
+}
+
+h3 {
+    mso-style-unhide: no;
+    mso-style-qformat: yes;
+    mso-style-parent: "Heading Base";
+    mso-style-next: "Body Text";
+    margin-top: 12.0pt;
+    margin-right: 0cm;
+    margin-bottom: 11.0pt;
+    margin-left: 0cm;
+    line-height: 12.0pt;
+    mso-pagination: widow-orphan lines-together;
+    page-break-after: avoid;
+    mso-outline-level: 3;
+    font-size: 10.0pt;
+    font-family: "Garamond", serif;
+    text-transform: uppercase;
+    letter-spacing: -.1pt;
+    mso-ansi-language: EN-US;
+    font-weight: normal;
+    font-style: italic;
+    mso-bidi-font-style: normal;
+}
+
+h4 {
+    mso-style-unhide: no;
+    mso-style-qformat: yes;
+    mso-style-parent: "Heading Base";
+    mso-style-next: "Body Text";
+    margin-top: 12.0pt;
+    margin-right: 0cm;
+    margin-bottom: 0cm;
+    margin-left: 0cm;
+    margin-bottom: .0001pt;
+    line-height: 12.0pt;
+    mso-pagination: widow-orphan lines-together;
+    page-break-after: avoid;
+    mso-outline-level: 4;
+    font-size: 12.0pt;
+    mso-bidi-font-size: 10.0pt;
+    font-family: "Garamond", serif;
+    letter-spacing: .25pt;
+    mso-ansi-language: EN-US;
+    font-weight: normal;
+    font-style: italic;
+    mso-bidi-font-style: normal;
+}
+
+h5 {
+    mso-style-unhide: no;
+    mso-style-qformat: yes;
+    mso-style-parent: "Heading Base";
+    mso-style-next: "Body Text";
+    margin-top: 12.0pt;
+    margin-right: 0cm;
+    margin-bottom: 11.0pt;
+    margin-left: 0cm;
+    line-height: 12.0pt;
+    mso-pagination: widow-orphan lines-together;
+    page-break-after: avoid;
+    mso-outline-level: 5;
+    font-size: 9.0pt;
+    mso-bidi-font-size: 10.0pt;
+    font-family: "Garamond", serif;
+    text-transform: uppercase;
+    letter-spacing: 1.0pt;
+    mso-ansi-language: EN-US;
+    mso-bidi-font-weight: normal;
+}
+
+h6 {
+    mso-style-unhide: no;
+    mso-style-qformat: yes;
+    mso-style-next: Normal;
+    margin-top: 12.0pt;
+    margin-right: 0cm;
+    margin-bottom: 0cm;
+    margin-left: 0cm;
+    margin-bottom: .0001pt;
+    text-align: justify;
+    line-height: 12.0pt;
+    mso-pagination: widow-orphan;
+    mso-outline-level: 6;
+    font-size: 11.0pt;
+    mso-bidi-font-size: 10.0pt;
+    font-family: "Garamond", serif;
+    mso-ansi-language: EN-US;
+    mso-bidi-font-weight: normal;
+}
+
+p.MsoHeader,
+li.MsoHeader,
+div.MsoHeader {
+    mso-style-unhide: no;
+    mso-style-parent: "Header Base";
+    margin-top: 11.0pt;
+    margin-right: 0cm;
+    margin-bottom: 11.0pt;
+    margin-left: -108.0pt;
+    text-align: justify;
+    line-height: 11.0pt;
+    mso-pagination: widow-orphan;
+    font-size: 11.0pt;
+    mso-bidi-font-size: 10.0pt;
+    font-family: "Garamond", serif;
+    mso-fareast-font-family: "Times New Roman";
+    mso-bidi-font-family: "Times New Roman";
+    text-transform: uppercase;
+    mso-ansi-language: EN-US;
+}
+
+p.MsoFooter,
+li.MsoFooter,
+div.MsoFooter {
+    mso-style-unhide: no;
+    mso-style-parent: "Header Base";
+    margin-top: 11.0pt;
+    margin-right: -42.0pt;
+    margin-bottom: 11.0pt;
+    margin-left: -108.0pt;
+    line-height: 12.0pt;
+    mso-pagination: widow-orphan;
+    tab-stops: right 366.0pt;
+    font-size: 11.0pt;
+    mso-bidi-font-size: 10.0pt;
+    font-family: "Garamond", serif;
+    mso-fareast-font-family: "Times New Roman";
+    mso-bidi-font-family: "Times New Roman";
+    text-transform: uppercase;
+    mso-ansi-language: EN-US;
+}
+
+span.MsoPageNumber {
+    mso-style-unhide: no;
+    mso-style-parent: "";
+    mso-ansi-font-size: 12.0pt;
+}
+
+p.MsoTitle,
+li.MsoTitle,
+div.MsoTitle {
+    mso-style-unhide: no;
+    mso-style-qformat: yes;
+    margin: 0cm;
+    margin-bottom: .0001pt;
+    text-align: center;
+    mso-pagination: widow-orphan;
+    font-size: 14.0pt;
+    mso-bidi-font-size: 10.0pt;
+    font-family: "Times New Roman", serif;
+    mso-fareast-font-family: "Times New Roman";
+    mso-bidi-font-family: "Traditional Arabic";
+    mso-ansi-language: EN-US;
+    font-weight: bold;
+    text-decoration: underline;
+    text-underline: single;
+}
+
+p.MsoBodyText,
+li.MsoBodyText,
+div.MsoBodyText {
+    mso-style-unhide: no;
+    margin-top: 0cm;
+    margin-right: 0cm;
+    margin-bottom: 11.0pt;
+    margin-left: 0cm;
+    text-align: justify;
+    line-height: 12.0pt;
+    mso-pagination: widow-orphan;
+    font-size: 11.0pt;
+    mso-bidi-font-size: 10.0pt;
+    font-family: "Garamond", serif;
+    mso-fareast-font-family: "Times New Roman";
+    mso-bidi-font-family: "Times New Roman";
+    mso-ansi-language: EN-US;
+}
+
+p.MsoBodyTextIndent,
+li.MsoBodyTextIndent,
+div.MsoBodyTextIndent {
+    mso-style-unhide: no;
+    mso-style-parent: "Body Text";
+    margin-top: 0cm;
+    margin-right: 0cm;
+    margin-bottom: 11.0pt;
+    margin-left: 36.0pt;
+    text-align: justify;
+    line-height: 12.0pt;
+    mso-pagination: widow-orphan;
+    font-size: 11.0pt;
+    mso-bidi-font-size: 10.0pt;
+    font-family: "Garamond", serif;
+    mso-fareast-font-family: "Times New Roman";
+    mso-bidi-font-family: "Times New Roman";
+    mso-ansi-language: EN-US;
+}
+
+p.MsoDate,
+li.MsoDate,
+div.MsoDate {
+    mso-style-unhide: no;
+    mso-style-parent: "Body Text";
+    margin-top: 0cm;
+    margin-right: 0cm;
+    margin-bottom: 11.0pt;
+    margin-left: 0cm;
+    text-align: justify;
+    line-height: 12.0pt;
+    mso-pagination: widow-orphan;
+    page-break-after: avoid;
+    font-size: 11.0pt;
+    mso-bidi-font-size: 10.0pt;
+    font-family: "Garamond", serif;
+    mso-fareast-font-family: "Times New Roman";
+    mso-bidi-font-family: "Times New Roman";
+    mso-ansi-language: EN-US;
+}
+
+a:link,
+span.MsoHyperlink {
+    mso-style-unhide: no;
+    color: blue;
+    text-decoration: underline;
+    text-underline: single;
+}
+
+a:visited,
+span.MsoHyperlinkFollowed {
+    mso-style-unhide: no;
+    color: purple;
+    text-decoration: underline;
+    text-underline: single;
+}
+
+em {
+    mso-style-unhide: no;
+    mso-style-qformat: yes;
+    mso-style-parent: "";
+    mso-ansi-font-size: 9.0pt;
+    font-family: "Garamond", serif;
+    mso-ascii-font-family: Garamond;
+    mso-hansi-font-family: Garamond;
+    text-transform: uppercase;
+    letter-spacing: 0pt;
+    font-style: normal;
+}
+
+p.MsoDocumentMap,
+li.MsoDocumentMap,
+div.MsoDocumentMap {
+    mso-style-unhide: no;
+    mso-style-link: "Document Map Char";
+    margin: 0cm;
+    margin-bottom: .0001pt;
+    text-align: justify;
+    mso-pagination: widow-orphan;
+    font-size: 8.0pt;
+    font-family: "Tahoma", sans-serif;
+    mso-fareast-font-family: "Times New Roman";
+    mso-ansi-language: EN-US;
+}
+
+p.MsoAcetate,
+li.MsoAcetate,
+div.MsoAcetate {
+    mso-style-unhide: no;
+    mso-style-link: "Balloon Text Char";
+    margin: 0cm;
+    margin-bottom: .0001pt;
+    text-align: justify;
+    mso-pagination: widow-orphan;
+    font-size: 8.0pt;
+    font-family: "Tahoma", sans-serif;
+    mso-fareast-font-family: "Times New Roman";
+    mso-ansi-language: EN-US;
+}
+
+p.MsoListParagraph,
+li.MsoListParagraph,
+div.MsoListParagraph {
+    mso-style-priority: 34;
+    mso-style-unhide: no;
+    mso-style-qformat: yes;
+    margin-top: 0cm;
+    margin-right: 0cm;
+    margin-bottom: 0cm;
+    margin-left: 36.0pt;
+    margin-bottom: .0001pt;
+    text-align: justify;
+    mso-pagination: widow-orphan;
+    font-size: 11.0pt;
+    mso-bidi-font-size: 10.0pt;
+    font-family: "Garamond", serif;
+    mso-fareast-font-family: "Times New Roman";
+    mso-bidi-font-family: "Times New Roman";
+    mso-ansi-language: EN-US;
+}
+
+p.Achievement,
+li.Achievement,
+div.Achievement {
+    mso-style-name: Achievement;
+    mso-style-unhide: no;
+    mso-style-parent: "Body Text";
+    margin-top: 0cm;
+    margin-right: 12.25pt;
+    margin-bottom: 3.0pt;
+    margin-left: 0cm;
+    text-align: justify;
+    line-height: 12.0pt;
+    mso-pagination: widow-orphan;
+    font-size: 11.0pt;
+    mso-bidi-font-size: 10.0pt;
+    font-family: "Garamond", serif;
+    mso-fareast-font-family: "Times New Roman";
+    mso-bidi-font-family: "Times New Roman";
+    mso-ansi-language: EN-US;
+}
+
+p.Address1,
+li.Address1,
+div.Address1 {
+    mso-style-name: "Address 1";
+    mso-style-unhide: no;
+    margin: 0cm;
+    margin-bottom: .0001pt;
+    text-align: center;
+    line-height: 8.0pt;
+    mso-pagination: widow-orphan;
+    font-size: 7.5pt;
+    mso-bidi-font-size: 10.0pt;
+    font-family: "Garamond", serif;
+    mso-fareast-font-family: "Times New Roman";
+    mso-bidi-font-family: "Times New Roman";
+    text-transform: uppercase;
+    letter-spacing: 1.5pt;
+    mso-ansi-language: EN-US;
+}
+
+p.Address2,
+li.Address2,
+div.Address2 {
+    mso-style-name: "Address 2";
+    mso-style-unhide: no;
+    margin: 0cm;
+    margin-bottom: .0001pt;
+    text-align: center;
+    line-height: 8.0pt;
+    mso-pagination: widow-orphan;
+    font-size: 7.5pt;
+    mso-bidi-font-size: 10.0pt;
+    font-family: "Garamond", serif;
+    mso-fareast-font-family: "Times New Roman";
+    mso-bidi-font-family: "Times New Roman";
+    text-transform: uppercase;
+    letter-spacing: 1.5pt;
+    mso-ansi-language: EN-US;
+}
+
+p.CompanyName,
+li.CompanyName,
+div.CompanyName {
+    mso-style-name: "Company Name";
+    mso-style-unhide: no;
+    mso-style-next: "Job Title";
+    margin-top: 11.0pt;
+    margin-right: 0cm;
+    margin-bottom: 0cm;
+    margin-left: 0cm;
+    margin-bottom: .0001pt;
+    line-height: 11.0pt;
+    mso-pagination: widow-orphan;
+    tab-stops: 72.0pt right 324.0pt;
+    font-size: 11.0pt;
+    mso-bidi-font-size: 10.0pt;
+    font-family: "Garamond", serif;
+    mso-fareast-font-family: "Times New Roman";
+    mso-bidi-font-family: "Times New Roman";
+    mso-ansi-language: EN-US;
+}
+
+p.Institution,
+li.Institution,
+div.Institution {
+    mso-style-name: Institution;
+    mso-style-unhide: no;
+    mso-style-next: Achievement;
+    margin-top: 3.0pt;
+    margin-right: 0cm;
+    margin-bottom: 0cm;
+    margin-left: 0cm;
+    margin-bottom: .0001pt;
+    line-height: 11.0pt;
+    mso-pagination: widow-orphan;
+    tab-stops: 72.0pt right 324.0pt;
+    font-size: 11.0pt;
+    mso-bidi-font-size: 10.0pt;
+    font-family: "Garamond", serif;
+    mso-fareast-font-family: "Times New Roman";
+    mso-bidi-font-family: "Times New Roman";
+    mso-ansi-language: EN-US;
+}
+
+p.JobTitle,
+li.JobTitle,
+div.JobTitle {
+    mso-style-name: "Job Title";
+    mso-style-unhide: no;
+    mso-style-parent: "";
+    mso-style-next: Achievement;
+    margin-top: 2.0pt;
+    margin-right: 0cm;
+    margin-bottom: 2.0pt;
+    margin-left: 0cm;
+    mso-line-height-alt: 11.0pt;
+    mso-pagination: widow-orphan;
+    font-size: 11.5pt;
+    mso-bidi-font-size: 10.0pt;
+    font-family: "Garamond", serif;
+    mso-fareast-font-family: "Times New Roman";
+    mso-bidi-font-family: "Times New Roman";
+    letter-spacing: .25pt;
+    mso-ansi-language: EN-US;
+    font-style: italic;
+    mso-bidi-font-style: normal;
+}
+
+p.Name,
+li.Name,
+div.Name {
+    mso-style-name: Name;
+    mso-style-unhide: no;
+    mso-style-next: Normal;
+    margin-top: 0cm;
+    margin-right: 0cm;
+    margin-bottom: 22.0pt;
+    margin-left: 0cm;
+    text-align: center;
+    mso-line-height-alt: 12.0pt;
+    mso-pagination: widow-orphan;
+    font-size: 22.0pt;
+    mso-bidi-font-size: 10.0pt;
+    font-family: "Garamond", serif;
+    mso-fareast-font-family: "Times New Roman";
+    mso-bidi-font-family: "Times New Roman";
+    text-transform: uppercase;
+    letter-spacing: 4.0pt;
+    mso-ansi-language: EN-US;
+}
+
+p.Objective,
+li.Objective,
+div.Objective {
+    mso-style-name: Objective;
+    mso-style-unhide: no;
+    mso-style-next: "Body Text";
+    margin-top: 3.0pt;
+    margin-right: 0cm;
+    margin-bottom: 11.0pt;
+    margin-left: 0cm;
+    text-align: justify;
+    line-height: 11.0pt;
+    mso-pagination: widow-orphan;
+    font-size: 11.0pt;
+    mso-bidi-font-size: 10.0pt;
+    font-family: "Garamond", serif;
+    mso-fareast-font-family: "Times New Roman";
+    mso-bidi-font-family: "Times New Roman";
+    mso-ansi-language: EN-US;
+}
+
+p.SectionTitle,
+li.SectionTitle,
+div.SectionTitle {
+    mso-style-name: "Section Title";
+    mso-style-unhide: no;
+    mso-style-next: Objective;
+    margin-top: 11.0pt;
+    margin-right: 0cm;
+    margin-bottom: 0cm;
+    margin-left: 0cm;
+    margin-bottom: .0001pt;
+    line-height: 11.0pt;
+    mso-pagination: widow-orphan;
+    border: none;
+    mso-border-bottom-alt: solid gray .75pt;
+    padding: 0cm;
+    mso-padding-alt: 0cm 0cm 1.0pt 0cm;
+    font-size: 10.0pt;
+    font-family: "Garamond", serif;
+    mso-fareast-font-family: "Times New Roman";
+    mso-bidi-font-family: "Times New Roman";
+    text-transform: uppercase;
+    letter-spacing: .75pt;
+    mso-ansi-language: EN-US;
+    border-bottom: 1px solid darkblue;
+}
+
+p.PersonalInfo,
+li.PersonalInfo,
+div.PersonalInfo {
+    mso-style-name: "Personal Info";
+    mso-style-unhide: no;
+    mso-style-parent: Achievement;
+    mso-style-next: Achievement;
+    margin-top: 11.0pt;
+    margin-right: 0cm;
+    margin-bottom: 3.0pt;
+    margin-left: 12.25pt;
+    text-align: justify;
+    text-indent: -12.25pt;
+    line-height: 12.0pt;
+    mso-pagination: widow-orphan;
+    mso-list: l0 level1 lfo2;
+    font-size: 11.0pt;
+    mso-bidi-font-size: 10.0pt;
+    font-family: "Garamond", serif;
+    mso-fareast-font-family: "Times New Roman";
+    mso-bidi-font-family: "Times New Roman";
+    mso-ansi-language: EN-US;
+}
+
+p.CityState,
+li.CityState,
+div.CityState {
+    mso-style-name: "City\/State";
+    mso-style-unhide: no;
+    mso-style-parent: "Body Text";
+    mso-style-next: "Body Text";
+    margin-top: 0cm;
+    margin-right: 0cm;
+    margin-bottom: 11.0pt;
+    margin-left: 0cm;
+    text-align: justify;
+    line-height: 12.0pt;
+    mso-pagination: widow-orphan;
+    page-break-after: avoid;
+    font-size: 11.0pt;
+    mso-bidi-font-size: 10.0pt;
+    font-family: "Garamond", serif;
+    mso-fareast-font-family: "Times New Roman";
+    mso-bidi-font-family: "Times New Roman";
+    mso-ansi-language: EN-US;
+}
+
+p.CompanyNameOne,
+li.CompanyNameOne,
+div.CompanyNameOne {
+    mso-style-name: "Company Name One";
+    mso-style-unhide: no;
+    mso-style-parent: "Company Name";
+    mso-style-next: "Job Title";
+    margin-top: 3.0pt;
+    margin-right: 0cm;
+    margin-bottom: 0cm;
+    margin-left: 0cm;
+    margin-bottom: .0001pt;
+    line-height: 11.0pt;
+    mso-pagination: widow-orphan;
+    tab-stops: 72.0pt right 324.0pt;
+    font-size: 11.0pt;
+    mso-bidi-font-size: 10.0pt;
+    font-family: "Garamond", serif;
+    mso-fareast-font-family: "Times New Roman";
+    mso-bidi-font-family: "Times New Roman";
+    mso-ansi-language: EN-US;
+}
+
+p.DocumentLabel,
+li.DocumentLabel,
+div.DocumentLabel {
+    mso-style-name: "Document Label";
+    mso-style-unhide: no;
+    mso-style-next: "Section Title";
+    margin-top: 0cm;
+    margin-right: 0cm;
+    margin-bottom: 11.0pt;
+    margin-left: 0cm;
+    text-align: justify;
+    mso-pagination: widow-orphan;
+    font-size: 24.0pt;
+    mso-bidi-font-size: 10.0pt;
+    font-family: "Garamond", serif;
+    mso-fareast-font-family: "Times New Roman";
+    mso-bidi-font-family: "Times New Roman";
+    letter-spacing: -1.0pt;
+    mso-ansi-language: EN-US;
+}
+
+p.HeaderBase,
+li.HeaderBase,
+div.HeaderBase {
+    mso-style-name: "Header Base";
+    mso-style-unhide: no;
+    margin-top: 11.0pt;
+    margin-right: 0cm;
+    margin-bottom: 11.0pt;
+    margin-left: -108.0pt;
+    text-align: justify;
+    line-height: 11.0pt;
+    mso-pagination: widow-orphan;
+    font-size: 11.0pt;
+    mso-bidi-font-size: 10.0pt;
+    font-family: "Garamond", serif;
+    mso-fareast-font-family: "Times New Roman";
+    mso-bidi-font-family: "Times New Roman";
+    text-transform: uppercase;
+    mso-ansi-language: EN-US;
+}
+
+p.HeadingBase,
+li.HeadingBase,
+div.HeadingBase {
+    mso-style-name: "Heading Base";
+    mso-style-unhide: no;
+    mso-style-parent: "Body Text";
+    mso-style-next: "Body Text";
+    margin-top: 12.0pt;
+    margin-right: 0cm;
+    margin-bottom: 12.0pt;
+    margin-left: 0cm;
+    text-align: justify;
+    line-height: 12.0pt;
+    mso-pagination: widow-orphan lines-together;
+    page-break-after: avoid;
+    font-size: 11.0pt;
+    mso-bidi-font-size: 10.0pt;
+    font-family: "Garamond", serif;
+    mso-fareast-font-family: "Times New Roman";
+    mso-bidi-font-family: "Times New Roman";
+    text-transform: uppercase;
+    mso-ansi-language: EN-US;
+}
+
+span.Job {
+    mso-style-name: Job;
+    mso-style-unhide: no;
+}
+
+span.Lead-inEmphasis {
+    mso-style-name: "Lead-in Emphasis";
+    mso-style-unhide: no;
+    mso-style-parent: "";
+    mso-ansi-font-size: 9.0pt;
+    font-family: "Arial Black", sans-serif;
+    mso-ascii-font-family: "Arial Black";
+    mso-hansi-font-family: "Arial Black";
+    letter-spacing: -.3pt;
+}
+
+p.NoTitle,
+li.NoTitle,
+div.NoTitle {
+    mso-style-name: "No Title";
+    mso-style-unhide: no;
+    mso-style-parent: "Section Title";
+    margin-top: 11.0pt;
+    margin-right: 0cm;
+    margin-bottom: 0cm;
+    margin-left: 0cm;
+    margin-bottom: .0001pt;
+    line-height: 11.0pt;
+    mso-pagination: widow-orphan;
+    font-size: 10.0pt;
+    font-family: "Garamond", serif;
+    mso-fareast-font-family: "Times New Roman";
+    mso-bidi-font-family: "Times New Roman";
+    text-transform: uppercase;
+    letter-spacing: .75pt;
+    mso-ansi-language: EN-US;
+}
+
+p.PersonalData,
+li.PersonalData,
+div.PersonalData {
+    mso-style-name: "Personal Data";
+    mso-style-unhide: no;
+    mso-style-parent: "Body Text";
+    margin-top: 0cm;
+    margin-right: 54.0pt;
+    margin-bottom: 6.0pt;
+    margin-left: -54.0pt;
+    text-align: justify;
+    line-height: 12.0pt;
+    mso-line-height-rule: exactly;
+    mso-pagination: widow-orphan;
+    font-size: 11.0pt;
+    mso-bidi-font-size: 10.0pt;
+    font-family: "Arial", sans-serif;
+    mso-fareast-font-family: "Times New Roman";
+    mso-bidi-font-family: "Times New Roman";
+    mso-ansi-language: EN-US;
+    font-style: italic;
+    mso-bidi-font-style: normal;
+}
+
+p.SectionSubtitle,
+li.SectionSubtitle,
+div.SectionSubtitle {
+    mso-style-name: "Section Subtitle";
+    mso-style-unhide: no;
+    mso-style-parent: "Section Title";
+    mso-style-next: Normal;
+    margin-top: 11.0pt;
+    margin-right: 0cm;
+    margin-bottom: 0cm;
+    margin-left: 0cm;
+    margin-bottom: .0001pt;
+    mso-line-height-alt: 11.0pt;
+    mso-pagination: widow-orphan;
+    border: none;
+    mso-border-bottom-alt: solid gray .75pt;
+    padding: 0cm;
+    mso-padding-alt: 0cm 0cm 1.0pt 0cm;
+    font-size: 12.0pt;
+    mso-bidi-font-size: 10.0pt;
+    font-family: "Garamond", serif;
+    mso-fareast-font-family: "Times New Roman";
+    mso-bidi-font-family: "Times New Roman";
+    letter-spacing: .5pt;
+    mso-ansi-language: EN-US;
+    font-style: italic;
+    mso-bidi-font-style: normal;
+}
+
+span.DocumentMapChar {
+    mso-style-name: "Document Map Char";
+    mso-style-unhide: no;
+    mso-style-locked: yes;
+    mso-style-link: "Document Map";
+    mso-ansi-font-size: 8.0pt;
+    mso-bidi-font-size: 8.0pt;
+    font-family: "Tahoma", sans-serif;
+    mso-ascii-font-family: Tahoma;
+    mso-hansi-font-family: Tahoma;
+    mso-bidi-font-family: Tahoma;
+}
+
+span.BalloonTextChar {
+    mso-style-name: "Balloon Text Char";
+    mso-style-unhide: no;
+    mso-style-locked: yes;
+    mso-style-link: "Balloon Text";
+    mso-ansi-font-size: 8.0pt;
+    mso-bidi-font-size: 8.0pt;
+    font-family: "Tahoma", sans-serif;
+    mso-ascii-font-family: Tahoma;
+    mso-hansi-font-family: Tahoma;
+    mso-bidi-font-family: Tahoma;
+}
+
+span.apple-converted-space {
+    mso-style-name: apple-converted-space;
+    mso-style-unhide: no;
+}
+
+span.spelle {
+    mso-style-name: spelle;
+    mso-style-unhide: no;
+}
+
+span.SpellE {
+    mso-style-name: "";
+    mso-spl-e: yes;
+}
+
+span.GramE {
+    mso-style-name: "";
+    mso-gram-e: yes;
+}
+
+.MsoChpDefault {
+    mso-style-type: export-only;
+    mso-default-props: yes;
+    font-size: 10.0pt;
+    mso-ansi-font-size: 10.0pt;
+    mso-bidi-font-size: 10.0pt;
+    mso-ansi-language: EN-US;
+}
+
+/* Page Definitions */
+@page {
+    mso-footnote-separator: url("MohammedAhmedCVprof.fld/header.html") fs;
+    mso-footnote-continuation-separator: url("MohammedAhmedCVprof.fld/header.html") fcs;
+    mso-endnote-separator: url("MohammedAhmedCVprof.fld/header.html") es;
+    mso-endnote-continuation-separator: url("MohammedAhmedCVprof.fld/header.html") ecs;
+}
+
+@page WordSection1 {
+    size: 612.0pt 792.0pt;
+    margin: 52.75pt 90.0pt 72.0pt 90.0pt;
+    mso-header-margin: 36.0pt;
+    mso-footer-margin: 36.0pt;
+    mso-footer: url("MohammedAhmedCVprof.fld/header.html") f1;
+    mso-paper-source: 0;
+}
+
+div.WordSection1 {
+    page: WordSection1;
+}
+
+/* List Definitions */
+@list l0 {
+    mso-list-id: -2;
+    mso-list-type: simple;
+    mso-list-template-ids: -1;
+}
+
+@list l0:level1 {
+    mso-level-start-at: 0;
+    mso-level-style-link: "Personal Info";
+    mso-level-text: *;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    margin-left: 0cm;
+    text-indent: 0cm;
+}
+
+@list l1 {
+    mso-list-id: 326710485;
+    mso-list-type: hybrid;
+    mso-list-template-ids: 334123318 67567621 67567619 67567621 67567617 67567619 67567621 67567617 67567619 67567621;
+}
+
+@list l1:level1 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l1:level2 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l1:level3 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l1:level4 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Symbol;
+}
+
+@list l1:level5 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l1:level6 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l1:level7 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Symbol;
+}
+
+@list l1:level8 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l1:level9 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l2 {
+    mso-list-id: 549656939;
+    mso-list-type: hybrid;
+    mso-list-template-ids: -1650028100 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;
+}
+
+@list l2:level1 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Symbol;
+}
+
+@list l2:level2 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l2:level3 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l2:level4 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Symbol;
+}
+
+@list l2:level5 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l2:level6 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l2:level7 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Symbol;
+}
+
+@list l2:level8 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l2:level9 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l3 {
+    mso-list-id: 743258336;
+    mso-list-type: hybrid;
+    mso-list-template-ids: 1291491270 67567621 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;
+}
+
+@list l3:level1 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l3:level2 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l3:level3 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l3:level4 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Symbol;
+}
+
+@list l3:level5 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l3:level6 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l3:level7 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Symbol;
+}
+
+@list l3:level8 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l3:level9 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l4 {
+    mso-list-id: 832062136;
+    mso-list-type: hybrid;
+    mso-list-template-ids: 937870272 67567621 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;
+}
+
+@list l4:level1 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l4:level2 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l4:level3 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l4:level4 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Symbol;
+}
+
+@list l4:level5 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l4:level6 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l4:level7 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Symbol;
+}
+
+@list l4:level8 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l4:level9 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l5 {
+    mso-list-id: 839541095;
+    mso-list-type: hybrid;
+    mso-list-template-ids: 227978350 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;
+}
+
+@list l5:level1 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Symbol;
+}
+
+@list l5:level2 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l5:level3 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l5:level4 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Symbol;
+}
+
+@list l5:level5 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l5:level6 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l5:level7 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Symbol;
+}
+
+@list l5:level8 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l5:level9 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l6 {
+    mso-list-id: 912466420;
+    mso-list-type: hybrid;
+    mso-list-template-ids: -1865651814 -53694982 67567619 67567621 67567617 67567619 67567621 67567617 67567619 67567621;
+}
+
+@list l6:level1 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    mso-ansi-font-size: 10.0pt;
+    font-family: Wingdings;
+}
+
+@list l6:level2 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l6:level3 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l6:level4 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Symbol;
+}
+
+@list l6:level5 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l6:level6 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l6:level7 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Symbol;
+}
+
+@list l6:level8 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l6:level9 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l7 {
+    mso-list-id: 971978336;
+    mso-list-type: hybrid;
+    mso-list-template-ids: 1992059936 67567621 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;
+}
+
+@list l7:level1 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l7:level2 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l7:level3 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l7:level4 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Symbol;
+}
+
+@list l7:level5 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l7:level6 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l7:level7 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Symbol;
+}
+
+@list l7:level8 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l7:level9 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l8 {
+    mso-list-id: 1090346611;
+    mso-list-type: hybrid;
+    mso-list-template-ids: 871421298 67567621 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;
+}
+
+@list l8:level1 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    margin-left: 30.25pt;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l8:level2 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    margin-left: 66.25pt;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l8:level3 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    margin-left: 102.25pt;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l8:level4 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    margin-left: 138.25pt;
+    text-indent: -18.0pt;
+    font-family: Symbol;
+}
+
+@list l8:level5 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    margin-left: 174.25pt;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l8:level6 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    margin-left: 210.25pt;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l8:level7 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    margin-left: 246.25pt;
+    text-indent: -18.0pt;
+    font-family: Symbol;
+}
+
+@list l8:level8 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    margin-left: 282.25pt;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l8:level9 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    margin-left: 318.25pt;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l9 {
+    mso-list-id: 1101027869;
+    mso-list-type: hybrid;
+    mso-list-template-ids: -1021002898 67567621 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;
+}
+
+@list l9:level1 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l9:level2 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l9:level3 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l9:level4 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Symbol;
+}
+
+@list l9:level5 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l9:level6 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l9:level7 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Symbol;
+}
+
+@list l9:level8 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l9:level9 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l10 {
+    mso-list-id: 1264069490;
+    mso-list-type: hybrid;
+    mso-list-template-ids: -691515966 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;
+}
+
+@list l10:level1 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    margin-left: 66.65pt;
+    text-indent: -18.0pt;
+    font-family: Symbol;
+}
+
+@list l10:level2 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    margin-left: 102.65pt;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l10:level3 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    margin-left: 138.65pt;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l10:level4 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    margin-left: 174.65pt;
+    text-indent: -18.0pt;
+    font-family: Symbol;
+}
+
+@list l10:level5 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    margin-left: 210.65pt;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l10:level6 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    margin-left: 246.65pt;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l10:level7 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    margin-left: 282.65pt;
+    text-indent: -18.0pt;
+    font-family: Symbol;
+}
+
+@list l10:level8 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    margin-left: 318.65pt;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l10:level9 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    margin-left: 354.65pt;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l11 {
+    mso-list-id: 1723291136;
+    mso-list-type: simple;
+    mso-list-template-ids: -339983110;
+}
+
+@list l11:level1 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: 18.0pt;
+    mso-level-number-position: left;
+    margin-left: 12.25pt;
+    text-indent: -12.25pt;
+    font-family: Wingdings;
+}
+
+@list l12 {
+    mso-list-id: 1732656103;
+    mso-list-type: hybrid;
+    mso-list-template-ids: 1342980178 67698693 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;
+}
+
+@list l12:level1 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l12:level2 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l12:level3 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l12:level4 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Symbol;
+}
+
+@list l12:level5 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l12:level6 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l12:level7 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Symbol;
+}
+
+@list l12:level8 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l12:level9 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l13 {
+    mso-list-id: 1812559356;
+    mso-list-type: hybrid;
+    mso-list-template-ids: -1282487902 67567621 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;
+}
+
+@list l13:level1 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l13:level2 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l13:level3 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l13:level4 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Symbol;
+}
+
+@list l13:level5 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l13:level6 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l13:level7 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Symbol;
+}
+
+@list l13:level8 {
+    mso-level-number-format: bullet;
+    mso-level-text: o;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: "Courier New";
+}
+
+@list l13:level9 {
+    mso-level-number-format: bullet;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    text-indent: -18.0pt;
+    font-family: Wingdings;
+}
+
+@list l0:level1 lfo2 {
+    mso-level-start-at: 1;
+    mso-level-number-format: bullet;
+    mso-level-numbering: continue;
+    mso-level-text: ;
+    mso-level-tab-stop: none;
+    mso-level-number-position: left;
+    mso-level-legacy: yes;
+    mso-level-legacy-indent: 12.0pt;
+    mso-level-legacy-space: 0cm;
+    margin-left: 12.0pt;
+    text-indent: -12.0pt;
+    mso-ansi-font-size: 6.0pt;
+    mso-ascii-font-family: Wingdings;
+    mso-hansi-font-family: Wingdings;
+}
+
+ol {
+    margin-bottom: 0cm;
+}
+
+ul {
+    margin-bottom: 0cm;
+}
+
+
+/* Style Definitions */
+table.MsoNormalTable {
+    mso-style-name: "Table Normal";
+    mso-tstyle-rowband-size: 0;
+    mso-tstyle-colband-size: 0;
+    mso-style-noshow: yes;
+    mso-style-priority: 99;
+    mso-style-parent: "";
+    mso-padding-alt: 0cm 5.4pt 0cm 5.4pt;
+    mso-para-margin: 0cm;
+    mso-para-margin-bottom: .0001pt;
+    mso-pagination: widow-orphan;
+    font-size: 10.0pt;
+    font-family: "Times New Roman", serif;
+    mso-ansi-language: EN-US;
+}
+
+table.MsoTableClassic1 {
+    mso-style-name: "Table Classic 1";
+    mso-tstyle-rowband-size: 0;
+    mso-tstyle-colband-size: 0;
+    mso-style-unhide: no;
+    border-top: solid black 1.5pt;
+    border-left: none;
+    border-bottom: solid black 1.5pt;
+    border-right: none;
+    mso-padding-alt: 0cm 5.4pt 0cm 5.4pt;
+    mso-para-margin: 0cm;
+    mso-para-margin-bottom: .0001pt;
+    text-align: right;
+    mso-pagination: widow-orphan;
+    font-size: 10.0pt;
+    font-family: "Times New Roman", serif;
+    mso-ansi-language: EN-US;
+}
+
+table.MsoTableClassic1FirstRow {
+    mso-style-name: "Table Classic 1";
+    mso-table-condition: first-row;
+    mso-style-unhide: no;
+    mso-tstyle-border-bottom: .75pt solid black;
+    mso-tstyle-diagonal-down: none;
+    mso-tstyle-diagonal-up: none;
+    mso-ansi-font-style: italic;
+    mso-bidi-font-style: italic;
+}
+
+table.MsoTableClassic1LastRow {
+    mso-style-name: "Table Classic 1";
+    mso-table-condition: last-row;
+    mso-style-unhide: no;
+    mso-tstyle-border-top: .75pt solid black;
+    mso-tstyle-diagonal-down: none;
+    mso-tstyle-diagonal-up: none;
+    color: windowtext;
+}
+
+table.MsoTableClassic1FirstCol {
+    mso-style-name: "Table Classic 1";
+    mso-table-condition: first-column;
+    mso-style-unhide: no;
+    mso-tstyle-border-right: .75pt solid black;
+    mso-tstyle-diagonal-down: none;
+    mso-tstyle-diagonal-up: none;
+}
+
+table.MsoTableClassic1NECell {
+    mso-style-name: "Table Classic 1";
+    mso-table-condition: ne-cell;
+    mso-style-unhide: no;
+    mso-tstyle-diagonal-down: none;
+    mso-tstyle-diagonal-up: none;
+    mso-ansi-font-weight: bold;
+    mso-bidi-font-weight: bold;
+    mso-ansi-font-style: normal;
+    mso-bidi-font-style: normal;
+}
+
+table.MsoTableClassic1SWCell {
+    mso-style-name: "Table Classic 1";
+    mso-table-condition: sw-cell;
+    mso-style-unhide: no;
+    mso-tstyle-diagonal-down: none;
+    mso-tstyle-diagonal-up: none;
+    mso-ansi-font-weight: bold;
+    mso-bidi-font-weight: bold;
+}
+
+table.MsoTableGrid {
+    mso-style-name: "Table Grid";
+    mso-tstyle-rowband-size: 0;
+    mso-tstyle-colband-size: 0;
+    mso-style-priority: 39;
+    mso-style-unhide: no;
+    border: solid windowtext 1.0pt;
+    mso-border-alt: solid windowtext .5pt;
+    mso-padding-alt: 0cm 5.4pt 0cm 5.4pt;
+    mso-border-insideh: .5pt solid windowtext;
+    mso-border-insidev: .5pt solid windowtext;
+    mso-para-margin: 0cm;
+    mso-para-margin-bottom: .0001pt;
+    text-align: justify;
+    mso-pagination: widow-orphan;
+    font-size: 10.0pt;
+    font-family: "Times New Roman", serif;
+    mso-ansi-language: EN-US;
+}
+
+table.MsoTable15Plain1 {
+    mso-style-name: "Plain Table 1";
+    mso-tstyle-rowband-size: 1;
+    mso-tstyle-colband-size: 1;
+    mso-style-priority: 41;
+    mso-style-unhide: no;
+    border: solid #BFBFBF 1.0pt;
+    mso-border-themecolor: background1;
+    mso-border-themeshade: 191;
+    mso-border-alt: solid #BFBFBF .5pt;
+    mso-border-themecolor: background1;
+    mso-border-themeshade: 191;
+    mso-padding-alt: 0cm 5.4pt 0cm 5.4pt;
+    mso-border-insideh: .5pt solid #BFBFBF;
+    mso-border-insideh-themecolor: background1;
+    mso-border-insideh-themeshade: 191;
+    mso-border-insidev: .5pt solid #BFBFBF;
+    mso-border-insidev-themecolor: background1;
+    mso-border-insidev-themeshade: 191;
+    mso-para-margin: 0cm;
+    mso-para-margin-bottom: .0001pt;
+    mso-pagination: widow-orphan;
+    font-size: 10.0pt;
+    font-family: "Times New Roman", serif;
+    mso-ansi-language: EN-US;
+}
+
+table.MsoTable15Plain1FirstRow {
+    mso-style-name: "Plain Table 1";
+    mso-table-condition: first-row;
+    mso-style-priority: 41;
+    mso-style-unhide: no;
+    mso-ansi-font-weight: bold;
+    mso-bidi-font-weight: bold;
+}
+
+table.MsoTable15Plain1LastRow {
+    mso-style-name: "Plain Table 1";
+    mso-table-condition: last-row;
+    mso-style-priority: 41;
+    mso-style-unhide: no;
+    mso-tstyle-border-top: 1.5pt double #BFBFBF;
+    mso-tstyle-border-top-themecolor: background1;
+    mso-tstyle-border-top-themeshade: 191;
+    mso-ansi-font-weight: bold;
+    mso-bidi-font-weight: bold;
+}
+
+table.MsoTable15Plain1FirstCol {
+    mso-style-name: "Plain Table 1";
+    mso-table-condition: first-column;
+    mso-style-priority: 41;
+    mso-style-unhide: no;
+    mso-ansi-font-weight: bold;
+    mso-bidi-font-weight: bold;
+}
+
+table.MsoTable15Plain1LastCol {
+    mso-style-name: "Plain Table 1";
+    mso-table-condition: last-column;
+    mso-style-priority: 41;
+    mso-style-unhide: no;
+    mso-ansi-font-weight: bold;
+    mso-bidi-font-weight: bold;
+}
+
+table.MsoTable15Plain1OddColumn {
+    mso-style-name: "Plain Table 1";
+    mso-table-condition: odd-column;
+    mso-style-priority: 41;
+    mso-style-unhide: no;
+    mso-tstyle-shading: #F2F2F2;
+    mso-tstyle-shading-themecolor: background1;
+    mso-tstyle-shading-themeshade: 242;
+}
+
+table.MsoTable15Plain1OddRow {
+    mso-style-name: "Plain Table 1";
+    mso-table-condition: odd-row;
+    mso-style-priority: 41;
+    mso-style-unhide: no;
+    mso-tstyle-shading: #F2F2F2;
+    mso-tstyle-shading-themecolor: background1;
+    mso-tstyle-shading-themeshade: 242;
+}
+
+table.MsoTable15Plain2 {
+    mso-style-name: "Plain Table 2";
+    mso-tstyle-rowband-size: 1;
+    mso-tstyle-colband-size: 1;
+    mso-style-priority: 42;
+    mso-style-unhide: no;
+    border-top: solid #7F7F7F 1.0pt;
+    mso-border-top-themecolor: text1;
+    mso-border-top-themetint: 128;
+    border-left: none;
+    border-bottom: solid #7F7F7F 1.0pt;
+    mso-border-bottom-themecolor: text1;
+    mso-border-bottom-themetint: 128;
+    border-right: none;
+    mso-border-top-alt: solid #7F7F7F .5pt;
+    mso-border-top-themecolor: text1;
+    mso-border-top-themetint: 128;
+    mso-border-bottom-alt: solid #7F7F7F .5pt;
+    mso-border-bottom-themecolor: text1;
+    mso-border-bottom-themetint: 128;
+    mso-padding-alt: 0cm 5.4pt 0cm 5.4pt;
+    mso-para-margin: 0cm;
+    mso-para-margin-bottom: .0001pt;
+    mso-pagination: widow-orphan;
+    font-size: 10.0pt;
+    font-family: "Times New Roman", serif;
+    mso-ansi-language: EN-US;
+}
+
+table.MsoTable15Plain2FirstRow {
+    mso-style-name: "Plain Table 2";
+    mso-table-condition: first-row;
+    mso-style-priority: 42;
+    mso-style-unhide: no;
+    mso-tstyle-border-bottom: .5pt solid #7F7F7F;
+    mso-tstyle-border-bottom-themecolor: text1;
+    mso-tstyle-border-bottom-themetint: 128;
+    mso-ansi-font-weight: bold;
+    mso-bidi-font-weight: bold;
+}
+
+table.MsoTable15Plain2LastRow {
+    mso-style-name: "Plain Table 2";
+    mso-table-condition: last-row;
+    mso-style-priority: 42;
+    mso-style-unhide: no;
+    mso-tstyle-border-top: .5pt solid #7F7F7F;
+    mso-tstyle-border-top-themecolor: text1;
+    mso-tstyle-border-top-themetint: 128;
+    mso-ansi-font-weight: bold;
+    mso-bidi-font-weight: bold;
+}
+
+table.MsoTable15Plain2FirstCol {
+    mso-style-name: "Plain Table 2";
+    mso-table-condition: first-column;
+    mso-style-priority: 42;
+    mso-style-unhide: no;
+    mso-ansi-font-weight: bold;
+    mso-bidi-font-weight: bold;
+}
+
+table.MsoTable15Plain2LastCol {
+    mso-style-name: "Plain Table 2";
+    mso-table-condition: last-column;
+    mso-style-priority: 42;
+    mso-style-unhide: no;
+    mso-ansi-font-weight: bold;
+    mso-bidi-font-weight: bold;
+}
+
+table.MsoTable15Plain2OddColumn {
+    mso-style-name: "Plain Table 2";
+    mso-table-condition: odd-column;
+    mso-style-priority: 42;
+    mso-style-unhide: no;
+    mso-tstyle-border-left: .5pt solid #7F7F7F;
+    mso-tstyle-border-left-themecolor: text1;
+    mso-tstyle-border-left-themetint: 128;
+    mso-tstyle-border-right: .5pt solid #7F7F7F;
+    mso-tstyle-border-right-themecolor: text1;
+    mso-tstyle-border-right-themetint: 128;
+}
+
+table.MsoTable15Plain2EvenColumn {
+    mso-style-name: "Plain Table 2";
+    mso-table-condition: even-column;
+    mso-style-priority: 42;
+    mso-style-unhide: no;
+    mso-tstyle-border-left: .5pt solid #7F7F7F;
+    mso-tstyle-border-left-themecolor: text1;
+    mso-tstyle-border-left-themetint: 128;
+    mso-tstyle-border-right: .5pt solid #7F7F7F;
+    mso-tstyle-border-right-themecolor: text1;
+    mso-tstyle-border-right-themetint: 128;
+}
+
+table.MsoTable15Plain2OddRow {
+    mso-style-name: "Plain Table 2";
+    mso-table-condition: odd-row;
+    mso-style-priority: 42;
+    mso-style-unhide: no;
+    mso-tstyle-border-top: .5pt solid #7F7F7F;
+    mso-tstyle-border-top-themecolor: text1;
+    mso-tstyle-border-top-themetint: 128;
+    mso-tstyle-border-bottom: .5pt solid #7F7F7F;
+    mso-tstyle-border-bottom-themecolor: text1;
+    mso-tstyle-border-bottom-themetint: 128;
+}
+
+table.PlainTable21 {
+    mso-style-name: "Plain Table 21";
+    mso-tstyle-rowband-size: 1;
+    mso-tstyle-colband-size: 1;
+    mso-style-priority: 42;
+    mso-style-unhide: no;
+    border-top: solid #7F7F7F 1.0pt;
+    border-left: none;
+    border-bottom: solid #7F7F7F 1.0pt;
+    border-right: none;
+    mso-border-top-alt: solid #7F7F7F .5pt;
+    mso-border-bottom-alt: solid #7F7F7F .5pt;
+    mso-padding-alt: 0cm 5.4pt 0cm 5.4pt;
+    mso-para-margin: 0cm;
+    mso-para-margin-bottom: .0001pt;
+    mso-pagination: widow-orphan;
+    font-size: 10.0pt;
+    font-family: "Times New Roman", serif;
+    mso-ansi-language: EN-US;
+}
+
+table.PlainTable21FirstRow {
+    mso-style-name: "Plain Table 21";
+    mso-table-condition: first-row;
+    mso-style-priority: 42;
+    mso-style-unhide: no;
+    mso-tstyle-border-bottom: .5pt solid #7F7F7F;
+    mso-ansi-font-weight: bold;
+    mso-bidi-font-weight: bold;
+}
+
+table.PlainTable21LastRow {
+    mso-style-name: "Plain Table 21";
+    mso-table-condition: last-row;
+    mso-style-priority: 42;
+    mso-style-unhide: no;
+    mso-tstyle-border-top: .5pt solid #7F7F7F;
+    mso-ansi-font-weight: bold;
+    mso-bidi-font-weight: bold;
+}
+
+table.PlainTable21FirstCol {
+    mso-style-name: "Plain Table 21";
+    mso-table-condition: first-column;
+    mso-style-priority: 42;
+    mso-style-unhide: no;
+    mso-ansi-font-weight: bold;
+    mso-bidi-font-weight: bold;
+}
+
+table.PlainTable21LastCol {
+    mso-style-name: "Plain Table 21";
+    mso-table-condition: last-column;
+    mso-style-priority: 42;
+    mso-style-unhide: no;
+    mso-ansi-font-weight: bold;
+    mso-bidi-font-weight: bold;
+}
+
+table.PlainTable21OddColumn {
+    mso-style-name: "Plain Table 21";
+    mso-table-condition: odd-column;
+    mso-style-priority: 42;
+    mso-style-unhide: no;
+    mso-tstyle-border-left: .5pt solid #7F7F7F;
+    mso-tstyle-border-right: .5pt solid #7F7F7F;
+}
+
+table.PlainTable21EvenColumn {
+    mso-style-name: "Plain Table 21";
+    mso-table-condition: even-column;
+    mso-style-priority: 42;
+    mso-style-unhide: no;
+    mso-tstyle-border-left: .5pt solid #7F7F7F;
+    mso-tstyle-border-right: .5pt solid #7F7F7F;
+}
+
+table.PlainTable21OddRow {
+    mso-style-name: "Plain Table 21";
+    mso-table-condition: odd-row;
+    mso-style-priority: 42;
+    mso-style-unhide: no;
+    mso-tstyle-border-top: .5pt solid #7F7F7F;
+    mso-tstyle-border-bottom: .5pt solid #7F7F7F;
+}

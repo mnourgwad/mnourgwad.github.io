@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Left Sidebar With Collapsible Links</title>
+
+	<link rel="stylesheet" href="sidebar-collapse.css">
+
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+	<link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script>
+		$(function () {
+
+			var links = $('.sidebar-links > div');
+
+			links.on('click', function () {
+
+				links.removeClass('selected');
+				$(this).addClass('selected');
+
+			});
+		});
+	</script>
+
+</head>
+
+<body>
+
+	<aside class="sidebar-left-collapse">
+			<a href="#" class="company-logo">Logo</a>
+
+		<img src="MohammedAhmedCVprof.fld/image001.jpg" alt="my photo" style="width:100%">
+
+
+		<div class="sidebar-links">
+
+			<div class="link-blue selected">
+					<a href="{{ site.baseurl }}/"> <i class="fa fa-picture-o"></i>CV	</a>
+		
+				<ul class="sub-links">
+					<li> <a href="#Personal">Personal Information</a></li>
+					<li> <a href="#Community">Community Memberships</a></li>
+
+					<li><a href="#Education">Education</a></li>
+					<li><a href="#Professional">Experience</a></li>
+					<li> <a href="#Courses">Courses Taught</a></li>
+					<li> <a href="#Skills">Skills</a></li>
+					<li> <a href="#Languages">Languages</a></li>
+					<li> <a href="#Memberships">Memberships</a></li>
+					<li> <a href="#Awards">Awards</a></li>
+					<li> <a href="#PUBLICATIONS">Publications</a></li>
+				</ul>
+
+			</div>
+
+
+
+
+				<div class="link-blue">
+
+						<a href="/courses.html">
+							<i class="fa icon-book"></i>Courses
+						</a>
+		
+						<ul class="sub-links">
+				  <li><a href="/CSE302">CSE302: Automatic Control Engineering</a></li>
+				  <li><a href="/CSE421">CSE421: Digital Control</a></li>
+				  <li><a href="/MEC301">MEC301: Mechatronic Systems Design</a></li>
+				  <li><a href="/CSE4316">CSE4316: Robotics (Elective 4)</a></li>
+				  <li><a href="/CSE100">CSE100 : Computers and Programming الحاسبات والبرمجة 1</a></li>
+				  <li><a href="/latex">LaTeX Crash Course</a></li>
+				</ul>
+
+			</div>
+
+			<div class="link-blue">
+
+				<a href="#">
+					<i class="fa fa-picture-o"></i>Photography
+				</a>
+
+				<ul class="sub-links">
+					<li><a href="#">Portraits</a></li>
+					<li><a href="#">Landscape</a></li>
+					<li><a href="#">Studio shots</a></li>
+					<li><a href="#">Macros</a></li>
+				</ul>
+
+			</div>
+
+			<div class="link-red">
+
+				<a href="#">
+					<i class="fa fa-heart-o"></i>Favorites
+				</a>
+
+				<ul class="sub-links">
+					<li><a href="#">Link 1</a></li>
+					<li><a href="#">Link 2</a></li>
+					<li><a href="#">Link 3</a></li>
+					<li><a href="#">Link 4</a></li>
+				</ul>
+
+			</div>
+
+			<div class="link-yellow">
+
+				<a href="#">
+					<i class="fa fa-keyboard-o"></i>Projects
+				</a>
+
+				<ul class="sub-links">
+					<li><a href="#">Link 1</a></li>
+					<li><a href="#">Link 2</a></li>
+					<li><a href="#">Link 3</a></li>
+					<li><a href="#">Link 4</a></li>
+				</ul>
+
+			</div>
+
+			<div class="link-green">
+
+				<a href="#">
+					<i class="fa fa-map-marker"></i>Places
+				</a>
+
+				<ul class="sub-links">
+					<li><a href="#">Link 1</a></li>
+					<li><a href="#">Link 2</a></li>
+					<li><a href="#">Link 3</a></li>
+					<li><a href="#">Link 4</a></li>
+				</ul>
+
+			</div>
+
+		</div>
+
+	</aside>
+
+	<div class="main-content">
+
+		<div class="menu">
+
+			<img class="arrow left" src="assets/images/demo-arrow-left.png" alt="arrow" height="120">
+			<img class="arrow up" src="assets/images/demo-arrow-up.png" alt="arrow" height="150">
+
+			<h1>Freebie: 5 Responsive Sidebar Templates</h1>
+
+			<h2><a
+					href="http://tutorialzine.com/2015/04/freebie-5-elegant-and-responsive-sidebar-templates/">Download</a>
+			</h2>
+
+			<ul>
+				<li><a href="index.html">Basic</a></li>
+				<li><a href="sidebar-advanced.html">Advanced</a></li>
+				<li><a href="sidebar-left.html">Left</a></li>
+				<li><a href="sidebar-collapse.html" class="active">Collapse</a></li>
+				<li><a href="sidebar-light.html">Light</a></li>
+			</ul>
+
+		</div>
+
+	</div>
+
+
+</body>
+
+</html>
