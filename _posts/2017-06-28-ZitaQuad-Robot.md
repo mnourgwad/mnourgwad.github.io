@@ -7,7 +7,8 @@ use_math: false
 
 <p> This page gives a Summary of ZitaQuad Robot: A Quadruped Walking Robot Project</p>
 
-## Report Summary
+
+# Report Summary
 <p> 
 In this report, we present the technical details of design, construction and control of a four-legged walking robot named ZitaQuad and the components that make up our final design are discussed. ZitaQuad robot is capable of basic mobility tasks such as walking forward, backward, and rotating. The legs are of a modular design that have three degrees of freedom each. This robot will serve as a platform onto which additional sensory components could be later added. Its implemented control software is programmed to perform increasingly complex tasks. Also, we describe the basic robot gaits of locomotion for efficient navigation. The robot motion is controlled through an android application over Bluetooth communication. The construction of the robot consists of mechanical structure, microcontroller board, and software program. 
 </p>
