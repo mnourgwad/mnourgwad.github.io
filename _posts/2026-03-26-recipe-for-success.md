@@ -4,7 +4,6 @@ title: "Recipe for Success"
 date: 2026-03-26
 ---
 
-# Recipe for Success
 1. Take this course seriously, starting on the first day. That means scheduling study time every day, starting today.
 2. Read the chapter and/or online notes before the lecture. Read carefully, do not skim.
 3. Read with a pen and notebook. Take notes while you read, and work out example problems.
